@@ -1,0 +1,2340 @@
+
+@mixin size($w, $h)
+	width: $w
+	height: $h
+
+@mixin font($b, $s, $c, $l)
+	font:
+		weight: $b
+		size: $s
+	color: $c
+	line-height: $l
+
+@mixin box-sizing
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+
+@mixin image($w, $h, $url)
+	width: $w
+	height: $h 
+	background: url($url) no-repeat
+
+@mixin center($w)
+	left: 50%
+	margin-left: -$w/2 
+
+body,html
+	margin: 0
+	padding: 0
+	@include size(100%, 100%)  
+
+body
+	background: url("../img/patern.jpg") repeat fixed
+	display: table
+
+#container
+	display: table-cell
+	vertical-align: top
+	width: 100%
+	height: 100%
+
+#main
+	margin: auto 
+	@include size(1083px, auto)
+
+.wrapper
+	width: 1085px
+	font-size: 0
+	> div
+		overflow: hidden
+		height: 100%
+		display: inline-block
+		vertical-align: top
+	img
+		cursor: pointer
+
+.box
+	@include size(155px, 157px)
+	line-height: 196px
+	display:  inline-block
+	vertical-align: top
+	h2
+		display: inline-block
+		text-align: left
+		padding-left: 20px 
+		margin: 0
+		@include font(100, 32px, #fff, 32px)
+	&.t
+		background-color: transparent !important
+		background-image: none !important
+	&.y 
+		background-color: #fecb00 !important
+	&.b 
+		background-color: #3b0083 !important
+	&.o 
+		background-color: #ff5800
+
+.box.b
+	background-color: #3b0083
+.text
+	display: none
+	width: 282px
+	overflow: hidden
+	>*
+		text-align: left
+	h3
+		margin: 0 0 33px
+		@include font(100, 17px, #fff, 1.2)
+	p
+		margin: 0 0 16px
+		padding-left: 28px
+		position: relative
+		@include font(100, 17px, #fff, 1.2)
+	p:before
+		position: absolute
+		left: 0
+		top: 2px
+		display: inline-block
+		@include size(20px, 20px)
+		content: ' '
+		background: url("../img/orange-plus.png") no-repeat
+		margin-right: 8px
+	p.minus:before
+		background: url("../img/orange-minus.png") no-repeat
+
+.logo
+	width: 155px 
+	.box
+		margin-top: 166px
+		background-color: #ff5800
+
+#logo
+	@include size(156px, 157px)
+	display: block
+	background-image: url("../img/logo.jpg")
+	background-repeat: no-repeat
+	background-position: center center
+	background-color: #ff5700
+	margin-top: 153px
+	text-indent: -99999px
+
+.logo .news
+	@extend .box
+	margin-top: 0
+	background-color: white
+	text-align: center
+	line-height: 174px
+	display: block
+	a
+		color: inherit
+	h3
+		margin: 0
+		display: inline-block
+		@include font(100, 32px, #000, 1)
+
+.wrap
+	overflow: hidden
+
+.buttonNews
+	display: block
+	@include size(39px, 39px)
+	background: url(../img/arrow.png) no-repeat center #ff5800
+	z-index: 5
+
+
+// orange
+.orange
+	display: none
+	text-align: center
+	background-color: #ff5800
+	@include size(310px, 933px)
+	height: 934px !important
+	>img
+		margin-top: 16px
+	.box
+		display: none
+		position: relative
+		left: 154px
+		background-color: #fecb00
+	
+	nav
+		margin-top: 120px
+		a
+			@include font(100, 18px, #fff, 1)
+			margin-left: 20px
+			text-decoration: none
+			:first-child
+				margin-left: 0
+
+	.box-news
+		background-color: #fff
+		@include font(100, 18px, #000, 1.25)
+		margin-top: 27px
+		text-align: left
+		position: relative
+		left: -310px
+		overflow: hidden
+		.wrapper-news
+			overflow: hidden
+			position: relative
+			height: 301px
+		p
+			position: absolute
+			top: 6px
+			left: 0
+			width: 266px
+			height: 264px
+			float: left
+			overflow: hidden
+		a
+			color: inherit
+
+		img
+			max-width: 266px
+			max-height: 264px
+
+// yellow
+.yellow
+	text-align: left
+	position: relative
+	@include size(310px, 100%)
+	margin-top: -200px
+	.wrap
+		.box
+			float: left
+	img + .box.y
+		height: 155px
+		h2
+			color: #30006b
+.yellow .text
+	p:before
+		background: url("../img/yellow-plus.png") no-repeat
+	p.minus:before
+		background: url("../img/yellow-minus.png") no-repeat
+
+
+
+.reconstruction
+	position: absolute
+	bottom: 0
+	left: 50%
+	margin-left: -155px
+	@include size(100%, 54px)
+	line-height: 60px
+	background-color: #ff5800
+	p
+		display: inline-block
+		margin: 0
+		@include font(100, 16px, #fff, 1)
+	
+// blue
+.blue
+	width: 310px
+	.text
+		width: 100%
+		height: 309px
+		@include box-sizing
+		padding: 0 14px 0 20px
+		background-color: #3b0083
+		p:before
+			background: url("../img/blue-plus.png") no-repeat
+		p.minus:before
+			background: url("../img/blue-minus.png") no-repeat
+
+
+	.social
+		@include size(100%, 155px)
+		background-color: #fecb00
+		text-align: right
+		.button
+			position: relative
+			top: 111px
+			right: 24px
+			display: inline-block
+		a
+			display: inline-block
+			@include font(100, 18px, #30006b, 1)
+			position: relative
+			top: -4px
+			text-decoration: none
+			span
+				text-transform: uppercase
+
+		.fb
+			@include size(15px, 27px)
+			margin-right: 23px
+			background: url("../img/fb.png") no-repeat
+			position: relative
+			top: 3px
+// orange scroll
+.drag
+	width: 100%
+	margin: auto
+	.box
+		height: 155px
+		background-repeat: no-repeat
+		margin-top: 0
+	.wrapper
+		height: 100%
+		width: 100%
+		top: 0
+	.contnetScroll
+		margin: 0
+		width: 927px
+		display: inline-block
+		overflow: hidden
+		position: relative
+		height: 1073px
+		.box
+			margin-bottom: -1px
+	.logo-scroll
+		float: left
+		.box 
+			cursor: pointer
+		.news
+			cursor: pointer
+	.wrapper-content
+		width: 1082px
+		height: 1024px
+		display: block
+		overflow: hidden
+		margin: auto
+	
+// orange
+#orange
+
+	.s1
+		background-repeat: no-repeat
+		background-image: url(../img/step1.png)
+		position: relative
+		top: 1300px
+	.logo-scroll
+		.box.o
+			margin-top: 154px
+			cursor: default
+	span
+		position: absolute
+		cursor: pointer
+	span.hover
+		background-image: url(../img/orangeHover.jpg) 
+	// 1
+	.s0-0
+		background-position: 0 0
+	.s0-1
+		background-position: -155px 0
+	.s0-2
+		background-position: -310px 0
+	.s0-3
+		background-position: -465px 0
+	.s0-4
+		background-position: -630px 0
+	// 2
+	.s0-5
+		background-position: 0 -155px
+	.s0-6
+		background-position: -155px -155px
+	.s0-7
+		background-position: -310px -155px
+	.s0-8
+		background-position: -465px -155px
+	.s0-8
+		background-position: -465px -155px
+	.s0-9
+		background-position: -630px -155px
+	// 3
+	.s0-10
+		background-position: 0 -310px
+	.s0-11
+		background-position: -155px -310px
+	.s0-12
+		background-position: -310px -309px
+		width: 154px
+	.s0-13
+		background-position: -464px -310px
+	.s0-14
+		background-position: -630px -310px
+	// 4
+	.s0-15
+		background-position: 0 -465px
+	.s0-16
+		background-position: -155px -465px
+	.s0-17
+		background-position: -310px -468px
+	.s0-18
+		background-position: -464px -468px
+	.s0-19
+		background-position: -630px -465px
+	// 5
+	.s0-20
+		background-position: 0 -630px
+	.s0-21
+		background-position: -155px -630px
+	.s0-22
+		background-position: -310px -628px
+	
+	.s2
+		position: absolute
+		background-image: url(../img/orange1.jpg)
+		background-repeat: no-repeat
+		// opacity: 0
+		// filter: alpha(opacity=0)
+
+	.ste1-0
+		left: 0
+		top: -200px
+		background-position: 0 0
+		span
+			width: 22px
+			height: 52px
+			bottom: 0
+			right: 0
+		span.hover
+			background-image: none
+	.ste1-1
+		left: 155px
+		top: -200px
+		background-position: -155px 0
+		span
+			top: 103px
+			left: 0
+			width: 127px
+			height: 53px
+		span.hover
+			background-position: -155px -105px
+	.ste1-2
+		left: 310px
+		top: -200px
+		background-position: -310px 0
+		span[name="city"]
+			top: 95px
+			right: 0
+			width: 72px
+			height: 65px
+		span[name="city"].hover
+			background-position: -393px -95px
+	.ste1-3
+		left: 465px
+		top: -200px
+		background-position: -465px 0
+		span
+			top: 94px
+			left: 0
+			width: 154px
+			height: 66px
+		span.hover
+			background-position: -465px -94px
+	.ste1-4
+		left: 615px
+		top: -200px
+		background-position: -615px 0
+		span
+			top: 92px
+			left: 0
+			width: 79px
+			height: 63px
+		span.hover
+			background-image: none
+	.ste1-5
+		left: 770px
+		top: -200px
+		background-position: -770px 0
+		background-image: none
+		// 2
+	.ste1-6
+		top: -200px
+		left: 0
+		background-position: 0 -156px
+		span
+			right: 0
+			width: 109px
+			height: 10px
+			top: 144px
+		span[name="bridge"]
+			top: 0
+			right: 0
+			width: 21px
+			height: 104px
+		span[name="plane"].hover
+			background-image: none
+		span[name="bridge"].hover
+			background-position: -134px -156px
+	.ste1-7
+		top: -200px
+		left: 155px
+		background-position: -155px -156px
+		span[name="plane"]
+			top: 142px
+			left: 0
+			width: 138px
+			height: 13px
+		span[name="bridge"]
+			top: 0
+			width: 128px
+			height: 105px
+			cursor: pointer
+		span[name="plane"].hover
+			background-image: none
+		span[name="bridge"].hover
+			background-position: -155px -156px
+	.ste1-8
+		top: -200px
+		left: 310px
+		background-position: -310px -156px
+		width: 154px
+		span
+			width: 72px
+			height: 37px
+			top: 0
+			left: 82px
+		span.hover
+			background-position: -392px -156px
+	.ste1-9
+		top: -200px
+		left: 463px
+		background-position: -463px -156px
+		span
+			top: 0
+			left: 41px
+			width: 100%
+			height: 100%
+		span + span
+			top: 0
+			left: 0
+			width: 91px
+			height: 37px
+		span.hover
+			background-position: -503px -155px
+		span+span.hover
+			background-position: -463px -155px
+	.ste1-10
+		top: -200px
+		left: 615px
+		background-position: -615px -156px
+		span
+			top: 0
+			left: 0
+			width: 79px
+			height: 100%
+		span.hover
+			background-position: -615px -156px
+	.ste1-11
+		top: -200px
+		left: 770px
+		background-position: -770px -155px
+		// 3
+
+	.ste1-12
+		top: -200px
+		left: 0
+		background-position: 0 -310px
+		height: 156px
+		span
+			position: absolute
+			top: 0
+			left: 43px
+			width: 112px
+			height: 156px
+			cursor: pointer
+		span.hover
+			background-position: -43px -310px
+	.ste1-13
+		top: -200px
+		left: 155px
+		background-position: -155px -310px
+		span
+			position: absolute
+			top: 0
+			left: 0
+			width: 140px
+			height: 100%
+			cursor: pointer
+		span.hover
+			background-position: -155px -310px
+	.ste1-14
+		top: -200px
+		left: 310px
+		background-position: -310px -310px
+	.ste1-15
+		top: -200px
+		left: 465px
+		background-position: -465px -310px
+		span
+			top: 0
+			left: 44px
+			width: 100%
+			height: 117px
+		span.hover
+			background-position: -509px -310px
+	.ste1-16
+		top: -200px
+		left: 615px
+		background-position: -615px -310px
+		span
+			top: 0
+			left: 0
+			height: 117px
+			width: 80px
+		span.hover
+			background-position: -615px -310px
+	.ste1-17
+		top: -200px
+		left: 770px
+		background-position: -770px -310px
+		// 4
+	.ste1-18
+		top: -200px
+		left: 0
+		background-position: 0 -465px
+		span[name="fruit"]
+			position: absolute
+			top: 53px
+			left: 96px
+			width: 77px
+			height: 132px
+			cursor: pointer
+		span[name="plane"]
+			top: 0
+			right: 0
+			width: 112px
+			height: 52px
+		span[name="plane"] + span[name="plane"]
+			top: 52px
+			width: 52px
+			height: 69px
+			left: 43px
+		span[name="fruit"].hover
+			background-position: -95px -518px
+		span[name="plane"].hover
+			background-position: -43px -466px
+		span[name="plane"] + span[name="plane"]
+			background-position: -43px -514px
+	.ste1-19
+		top: -200px
+		left: 155px
+		background-position: -155px -462px
+		span
+			width: 139px
+			height: 100%
+			top: 0
+			left: 0
+		span[name="plane"]
+			height: 50px
+			position: absolute
+			left: 0
+			cursor: pointer
+		span[name="fruit"]
+			height: 105px
+			position: absolute
+			left: 0
+			cursor: pointer
+			top: 50px
+			width: 141px
+		span[name="fruit"].hover
+			background-position: -155px -512px
+		span[name="plane"].hover
+			background-position: -155px -462px
+	.ste1-20
+		top: -200px
+		left: 310px
+		background-position: -310px -465px
+	.ste1-21
+		top: -200px
+		left: 465px
+		background-position: -465px -465px
+		span
+			top: 0
+			left: 43px
+			width: 100%
+			height: 100%
+		span.hover
+			background-position: -508px -465px
+	.ste1-22
+		top: -200px
+		left: 615px
+		background-position: -615px -465px
+		span[name="moto"]
+			width: 56px
+			height: 100%
+			top: 0
+			left: 0
+		span[name="life"]
+			width: 79px
+			height: 69px
+			top: 85px
+			right: 18px
+		span[name="life"].hover
+			background-position: -672px -551px
+		span[name="moto"]
+			background-position: -615px -465px
+	.ste1-23
+		top: -200px
+		left: 770px
+		background-position: -770px -465px
+		// 5
+	.ste1-24
+		top: -200px
+		left: 0
+		background-position: 0 -615px
+		span
+			position: absolute
+			right: 0
+			height: 151px
+			top: 0
+			width: 62px
+		span.hover
+			background-position: -93px -615px
+			
+	.ste1-25
+		top: -200px
+		left: 155px
+		background-position: -155px -615px
+		span
+			position: absolute
+			width: 141px
+			height: 153px
+			right: 14px
+			top: 0px
+			cursor: pointer
+		span.hover
+			background-position: -155px -615px
+	.ste1-26
+		top: -200px
+		left: 310px
+		background-position: -310px -615px
+		span
+			top: 135px
+			height: 17px
+			width: 32px
+			left: -15px
+		span[name="life"]
+			left: 76px
+			top: 142px
+			width: 79px
+		span[name="life"].hover
+			background-image: none
+		span[name="fruit"].hover
+			background-image: none
+	.ste1-27
+		top: -200px
+		left: 465px
+		background-position: -465px -615px
+		span[name="moto"]
+			top: 0
+			left: 43px
+			width: 112px
+			height: 61px
+		span[name="life"]
+			top: 60px
+			left: 43px
+			height: 100px
+			width: 112px
+		span[name="life"] + span[name="life"]
+			top: 128px
+			width: 43px
+			left: 0
+		span[name="moto"].hover
+			background-position: -508px -615px
+		span[name="life"]
+			background-position: -508px -675px
+		span[name="life"] + span[name="life"].hover
+			background-image: none
+	.ste1-28
+		top: -200px
+		left: 615px
+		background-position: -615px -615px
+		span[name="moto"]
+			top: 0
+			left: 0
+			width: 60px
+			height: 61px
+		span[name="life"]
+			top: 0
+			right: 18px
+			width: 78px
+			height: 100%
+		span[name="life"] + span[name="life"]
+			top: 61px
+			width: 60px
+			height: 94px
+			left: 0px
+		span[name="moto"].hover
+			background-position: -615px -615px
+		span[name="life"].hover
+			background-position: -674px -615px
+		span[name="life"] + span[name="life"].hover
+			background-position: -615px -676px
+	.ste1-29
+		top: -200px
+		left: 770px
+		background-position: -770px -615px
+		// 6
+	.ste1-30
+		top: -200px
+		left: 0
+		background-position: 0 -770px
+		span
+			left: 36px
+			height: 155px
+			width: 133px
+			top: 0
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -35px -773px
+	.ste1-31
+		top: -200px
+		left: 155px
+		background-position: -155px -770px
+		span
+			width: 100%
+			height: 100%
+			top: 0
+			left: 0
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -155px -770px
+	.ste1-32
+		top: -200px
+		left: 310px
+		background-position: -310px -770px
+		span
+			top: 0
+			width: 78px
+			left: 77px
+			height: 155px
+		span.hover
+			background-position: -387px -770px
+	.ste1-33
+		top: -200px
+		left: 465px
+		background-position: -465px -770px
+		span
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+		span.hover
+			background-position: -465px -770px
+	.ste1-34
+		top: -200px
+		left: 615px
+		background-position: -615px -770px
+		span
+			width: 137px
+			height: 100%
+			top: 0
+			left: 0
+		span.hover
+			background-position: -615px -770px
+	.ste1-35
+		top: -200px
+		left: 770px
+		background-position: -770px -770px
+	// 7
+	.ste1-36
+		top: -200px
+		left: 0
+		background-position: 0 -925px
+	.ste1-37
+		top: -200px
+		left: 155px
+		background-position: -155px -925px
+	.ste1-38
+		top: -200px
+		left: 310px
+		background-position: -310px -925px
+		span
+			width: 108px
+			height: 52px
+			top: 0
+			left: 77px
+		span.hover
+			background-position: -387px -925px
+
+	.ste1-39
+		top: -200px
+		left: 465px
+		background-position: -465px -925px
+		span
+			top: 0
+			left: 0
+			width: 100%
+			height: 34px
+		span.hover
+			background-position: -465px -925px
+	.ste1-40
+		top: -200px
+		left: 615px
+		background-position: -615px -925px
+		span
+			top: 0
+			left: 0
+			width: 131px
+			height: 34px
+		span.hover
+			background-position: -615px -925px
+	.ste1-41
+		top: -200px
+		left: 770px
+		background-image: none
+	.ste1-42
+		top: -200px
+		right: 2px
+	.ste1-43
+		top: -200px
+		right: 2px
+		
+	.s2-6
+		top: 114px	
+	.s2-7
+		// top: 117px
+		right: 118px
+		position: absolute
+
+	.sCity
+		top: 114px
+		position: absolute
+		right: 118px
+
+	.sLife
+		position: absolute
+		right: 2px
+	
+	.sScoter
+		position: absolute
+		right: 2px
+		top: 136px
+
+	.fruit
+		width: 622px
+		@include font(100, 18px, #000, 1)
+		background-color: #fff
+		padding: 17px 21px
+		position: absolute
+		top: 136px
+		right: 155px
+		margin: 0
+		display: none
+	.plane
+		// top: 114px
+		right: 157px
+		@extend .fruit
+	.city
+		@extend .fruit
+		top: 114px
+		width: auto
+		z-index: 4
+		right: 157px
+	.life
+		@extend .fruit
+		z-index: 4
+		top: 467px
+		right: 41px
+		width: 645px
+		position: absolute
+	.scoter
+		@extend .fruit
+		z-index: 4
+		top: 114px
+		right: 41px
+		width: 622px
+		position: absolute
+	
+	.scrollBox
+		position: relative
+		top: 307px
+	.sButtle
+		// top: 116px
+		position: absolute
+		right: 118px
+	.buttle
+		@extend .fruit
+		// top: 116px
+		right: 157px
+		display: block
+		
+	.sBridge
+		top: 116px
+		position: absolute
+		right: 118px
+	.bridge
+		@extend .fruit
+		top: 116px
+		right: 157px
+		display: block
+
+#ginger
+	.box
+
+		position: absolute
+		background-repeat: no-repeat
+
+	.logo-scroll
+		.box
+			position: static
+		.news
+			position: static
+		.box.b
+			margin-top: 154px
+		.buttonNews
+			position: static
+			display: block
+
+	span
+		cursor: pointer
+		position: absolute
+	.scrollBox
+		position: relative
+		top: 418px
+
+	.text
+		@include font(100, 18px, #000, 1)
+		background-color: #fff
+		padding: 17px 21px
+		position: absolute
+		display: none
+		margin: 0
+
+	.buttonNews
+		position: absolute
+		background-color: #3b0083
+		display: none
+	span[name="glase"]
+		cursor: default
+	// step1
+	.s1
+		background-image: url(../img/ginger1.png)
+		.box
+			position: relative
+
+	// 1
+	.s1-0
+		background-position: 0 0
+	.s1-1
+		background-position: -155px 0
+	.s1-2
+		background-position: -310px 0
+	.s1-3
+		background-position: -465px 0
+	.s1-4
+		background-position: -630px 0
+	// 2
+	.s1-5
+		background-position: 0 -155px
+	.s1-6
+		background-position: -155px -155px
+	.s1-7
+		background-position: -310px -155px
+	.s1-8
+		background-position: -465px -155px
+	.s1-8
+		background-position: -465px -155px
+	.s1-9
+		background-position: -630px -155px
+	// 3
+	.s1-10
+		background-position: 0 -310px
+	.s1-11
+		background-position: -155px -310px
+	.s1-12
+		background-position: -310px -309px
+		background-image: url(../img/ginger4.jpg)
+		width: 154px
+	.s1-13
+		background-position: -464px -310px
+	.s1-14
+		background-position: -630px -310px
+	// 4
+	.s1-15
+		background-position: 0 -465px
+	.s1-16
+		background-position: -155px -465px
+	.s1-17
+		background-position: -310px -468px
+	.s1-18
+		background-position: -466px -468px
+	.s1-19
+		background-position: -630px -465px
+	// 5
+	.s1-20
+		background-position: 0 -630px
+	.s1-21
+		background-position: -155px -630px
+	.s1-22
+		background-position: -310px -628px
+
+	// 4
+	.s4
+		background-image: url(../img/ginger4.jpg)
+	.st4-0
+		left: 0
+		top: 1300px
+		background-position: 0 0
+		span
+			width: 53px
+			height: 21px
+			top: 135px
+			right: 0
+	.st4-1
+		left: 155px
+		top: 1300px
+		background-position: -155px 0
+		span[name="boot"]
+			top: 139px
+			left: 0
+			width: 100%
+			height: 20px
+	.st4-2
+		left: 310px
+		top: 1300px
+		background-position: -310px 0
+		span[name="fru"]
+			top: 30px
+			left: 52px
+			width: 103px
+			height: 147px
+		span[name="boot"]
+			top: 134px
+			left: -1px
+			width: 20px
+			height: 49px
+		span[name="fru"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -362px -30px
+	.st4-3
+		left: 465px
+		top: 1300px
+		background-position: -465px 0
+		span
+			top: 27px
+			left: 0
+			width: 110px
+			height: 128px
+		span[name="fru"] + span[name="fru"]
+			top: 28px
+			left: 107px
+			width: 53px
+			height: 34px
+		span[name="mobile"]
+			left: 110px
+			width: 88px
+			height: 93px
+			top: 63px
+		span[name="fru"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -465px -27px
+		span[name="fru"].hover + span[name="fru"].hover
+			background-position: -575px -27px
+			background-image: url(../img/gingerHover.jpg)
+		span[name="mobile"].hover
+			background-position: -577px -63px
+			background-image: url(../img/gingerHover.jpg)
+	.st4-4
+		left: 615px
+		top: 1300px
+		background-position: -615px 0
+		span[name="fru"]
+			left: 0
+			top: 26px
+			width: 14px
+			height: 37px
+		span[name="mobile"]
+			width: 84px
+			height: 90px
+			top: 63px
+		span[name="mobile"].hover
+			background-position: -616px -63px
+			background-image: url(../img/gingerHover.jpg)
+	.st4-5
+		left: 770px
+		top: 1300px
+		background-position: -770px 0
+		// 2
+	.st4-6
+		top: 1300px
+		left: 0
+		background-position: 0 -155px
+		span
+			right: 0
+			width: 53px
+			height: 100%
+			top: 0
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -102px -155px
+	.st4-7
+		top: 1300px
+		left: 155px
+		background-position: -155px -156px
+		span
+			top: 0
+			left: 0
+			width: 139px
+			height: 156px
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -155px -156px
+	.st4-8
+		top: 1300px
+		left: 310px
+		background-position: -310px -156px
+		width: 154px
+		span
+			width: 102px
+			height: 30px
+			top: 0
+			left: 52px
+		span[name="boot"]
+			left: -15px
+			width: 30px
+		span[name="fru"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -362px -156px
+		span[name="boot"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -295px -156px
+	.st4-9
+		top: 1300px
+		left: 463px
+		background-position: -463px -156px
+		span[name="fru"]
+			top: 0
+			left: 0
+			width: 112px
+			height: 35px
+		span[name="fru"] + span[name="fru"]
+			width: 123px
+			height: 43px
+			left: 40px
+			top: 27px
+		span[name="one"]
+			top: 72px
+			left: 48px
+			width: 142px
+			height: 83px
+		span[name="mobile"]
+			right: 0
+			top: 0
+			width: 42px
+			height: 29px
+
+		span[name="fru"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -463px -156px
+
+		span[name="fru"] + span[name="fru"].hover
+			background-position: -503px -183px
+
+		span[name="one"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -512px -228px
+
+		span[name="mobile"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -578px -155px
+	.st4-10
+		top: 1300px
+		left: 615px
+		background-position: -615px -156px
+		span[name="mobile"]
+			top: 0
+			left: 0
+			width: 84px
+			height: 30px
+		span[name="one"]
+			top: 68px
+			width: 122px
+			height: 88px
+		span[name="fru"]
+			top: 29px
+			left: 0
+			width: 14px
+			height: 39px
+		span[name="one"].hover
+			background-position: -616px -224px
+			background-image: url(../img/gingerHover.jpg)
+		span[name="mobile"].hover
+			background-position: -616px -155px
+			background-image: url(../img/gingerHover.jpg)
+	.st4-11
+		top: 1300px
+		left: 770px
+		background-position: -770px -155px
+		// 3
+
+	.st4-12
+		top: 1300px
+		left: 0
+		background-position: 0 -310px
+		height: 159px
+		span
+			right: 0
+			height: 66px
+			width: 54px
+		span.hover
+			background-position: -101px -310px
+			background-image: url(../img/gingerHover.jpg)
+	.st4-13
+		top: 1300px
+		left: 155px
+		background-position: -155px -310px
+		height: 165px
+		span[name="boot"]
+			width: 139px
+			height: 64px
+			top: 0
+			left: 0
+		span[name="glase"]
+			bottom: 0
+			height: 50px
+			left: 0
+			width: 139px
+		span[name="boot"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -155px -310px
+	.st4-14
+		top: 1300px
+		left: 310px
+		background-position: -310px -310px
+	.st4-15
+		top: 1300px
+		left: 465px
+		background-position: -465px -310px
+		span
+			width: 108px
+			height: 155px
+			left: 44px
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -510px -310px
+	.st4-16
+		top: 1300px
+		left: 615px
+		background-position: -615px -310px
+		span
+			width: 123px
+			height: 100%
+			left: 0
+			top: 0
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -616px -310px
+	.st4-17
+		top: 1300px
+		left: 770px
+		background-position: -770px -310px
+		// 4
+	.st4-18
+		top: 1300px
+		left: 0
+		background-position: 0 -465px
+		span[name="car"]
+			top: 79px
+			left: 58px
+			width: 100px
+			height: 75px
+		span[name="glase"]
+			width: 12px
+			height: 77px
+			right: 0
+			top: 0
+	.st4-19
+		top: 1300px
+		left: 155px
+		background-position: -155px -465px
+		span[name="glase"]
+			width: 139px
+			height: 79px
+			top: 0
+			left: 0
+		span[name="car"]
+			width: 139px
+			height: 75px
+			top: 79px
+			left: 0
+	.st4-20
+		top: 1300px
+		left: 310px
+		background-position: -310px -465px
+	.st4-21
+		top: 1300px
+		left: 465px
+		background-position: -465px -465px
+		span
+			top: 0
+			left: 43px
+			width: 100%
+			height: 95px
+		span[name="clock"]
+			top: 112px
+			left: 43px
+			width: 121px
+			height: 44px
+
+		span[name="clock"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -508px -577px
+		span[name="one"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -509px -465px
+	.st4-22
+		top: 1300px
+		left: 615px
+		background-position: -615px -465px
+		span[name="one"]
+			width: 123px
+			height: 95px
+			top: 0
+			left: 0
+		span[name="clock"]
+			position: absolute
+			top: 110px
+			left: 0
+			height: 46px
+			width: 16px
+			left: 0
+		span[name="one"].hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -616px -465px
+	.st4-23
+		top: 1300px
+		left: 770px
+		background-position: -770px -465px
+		// 5
+	.st4-24
+		top: 1300px
+		left: 0
+		background-position: 0 -615px
+		span
+			width: 97px
+			right: 0
+			height: 100%
+			top: 0
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -58px -615px
+	.st4-25
+		top: 1300px
+		left: 155px
+		background-position: -155px -615px
+		span
+			top: 0
+			left: 0
+			width: 154px
+			height: 100%
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -155px -615px		
+	.st4-26
+		top: 1300px
+		left: 310px
+		background-position: -310px -615px
+		span
+			top: 126px
+			height: 29px
+			width: 86px
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -310px -741px
+	.st4-27
+		top: 1300px
+		left: 465px
+		background-position: -465px -615px
+		span
+			top: 0
+			left: 43px
+			width: 112px
+			height: 100%
+		span + span
+			top: 121px
+			left: -4px
+			width: 97px
+			height: 34px
+
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -508px -615px
+		span.hover + span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -461px -736px
+	.st4-28
+		top: 1300px
+		left: 615px
+		background-position: -615px -615px
+		span
+			width: 15px
+			height: 100%
+			top: 0
+			left: 0
+	.st4-29
+		top: 1300px
+		left: 770px
+		background-position: -770px -615px
+		// 6
+	.st4-30
+		top: 1300px
+		left: 0
+		background-position: 0 -770px
+		span
+			right: 0
+			height: 134px
+			width: 100px
+			top: 0
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -55px -770px
+	.st4-31
+		top: 1300px
+		left: 155px
+		background-position: -155px -770px
+		span
+			width: 100%
+			height: 132px
+			top: 0
+			left: 0
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -155px -770px
+	.st4-32
+		top: 1300px
+		left: 310px
+		background-position: -310px -770px
+		span
+			position: absolute
+			top: 0
+			width: 85px
+			left: 0
+			height: 130px
+		span.hover
+			background-image: url(../img/gingerHover.jpg)
+			background-position: -310px -770px
+	.st4-33
+		top: 1300px
+		left: 465px
+		background-position: -465px -770px
+	.st4-34
+		top: 1300px
+		left: 615px
+		background-position: -615px -770px
+	.st4-35
+		top: 1300px
+		left: 770px
+		background-position: -770px -770px
+	// 7
+	.st4-36
+		top: 1300px
+		left: 0
+		background-position: 0 -925px
+	.st4-37
+		top: 1300px
+		left: 155px
+		background-position: -155px -925px
+	.st4-38
+		top: 1300px
+		left: 310px
+		background-position: -310px -925px
+	.st4-39
+		top: 1300px
+		left: 465px
+		background-position: -465px -925px
+	.st4-40
+		top: 1300px
+		left: 615px
+		background-position: -615px -925px
+	.st4-41
+		top: 1300px
+		left: 770px
+		background-image: none
+	.s5
+		background-image: url(../img/gingerLast.jpg)
+	.st5-0
+		top: 1300px
+		right: 225px
+		width: 168px
+		height: 189px
+		span
+			width: 125px
+			height: 123px
+			top: 62px
+			right: 4px
+	.st5-1
+		top: 1024px
+		right: 2px
+		background-image: none
+	// clock
+	.clock
+		// top: 1300px
+		right: 41px
+		width: 482px
+
+	.sClock
+		// top: 1300px
+		right: 2px
+	// car
+	.sCar
+		top: 271px
+		right: 2px
+		display: block
+	.car
+		top: 271px
+		right: 41px
+		width: 500px
+		display: block
+	// one
+	.sOne
+		// top: 1300px
+		right: 2px
+	.one
+		// top: 1300px
+		right: 41px
+		width: 645px
+	// boot
+	.sBoot
+		// top: 1300px
+		right: 2px
+	.boot
+		// top: 1300px
+		right: 41px
+		width: 500px
+	// mobile
+	.sMobile
+		// top: 1300px
+		right: 2px
+	.mobile
+		// top: 1300px
+		right: 41px
+		width: 645px
+	// fruit
+	.sFru
+		// top: 1300px
+		right: 2px
+	.fru
+		// top: 1300px
+		right: 41px
+		width: 500px
+	// buttle
+	.sButtle
+		// top: 116px
+		right: 2px 
+	.buttle
+		// top: 116px
+		right: 41px
+		width: 645px
+		position: absolute
+#almond
+	.box
+		position: absolute
+		background-repeat: no-repeat
+
+	.logo-scroll
+		.box
+			position: static
+		.news
+			position: static
+		.box.y
+			margin-top: 154px
+		.buttonNews
+			position: static
+
+	span
+		cursor: pointer
+		position: absolute
+	.scrollBox
+		position: relative
+		top: 418px
+
+	.text
+		@include font(100, 18px, #000, 1)
+		background-color: #fff
+		padding: 17px 21px
+		position: absolute
+		margin: 0
+
+	.buttonNews
+		position: absolute
+		background-color: #fecb00
+
+	.s1
+		background-image: url(../img/almond1.png)
+		.box
+			position: relative
+
+	// 1
+	.s1-0
+		background-position: 0 0
+	.s1-1
+		background-position: -155px 0
+	.s1-2
+		background-position: -310px 0
+	.s1-3
+		background-position: -465px 0
+	.s1-4
+		background-position: -630px 0
+	// 2
+	.s1-5
+		background-position: 0 -155px
+	.s1-6
+		background-position: -155px -155px
+	.s1-7
+		background-position: -309px -155px
+	.s1-8
+		background-position: -465px -155px
+	.s1-8
+		background-position: -465px -155px
+	.s1-9
+		background-position: -630px -155px
+	// 3
+	.s1-10
+		background-position: 0 -310px
+	.s1-11
+		background-position: -155px -310px
+	.s1-12
+		background-position: -309px -309px
+		width: 154px
+	.s1-13
+		background-position: -464px -310px
+	.s1-14
+		background-position: -630px -310px
+	// 4
+	.s1-15
+		background-position: 0 -465px
+	.s1-16
+		background-position: -155px -465px
+	.s1-17
+		background-position: -309px -468px
+	.s1-18
+		background-position: -464px -468px
+	.s1-19
+		background-position: -630px -465px
+	// 5
+	.s1-20
+		background-position: 0 -630px
+	.s1-21
+		background-position: -155px -630px
+	.s1-22
+		background-position: -309px -628px
+	// 2
+	.s2
+		background-image: url(../img/almond2.png) 
+	
+	.st2-0
+		left: 0
+		top: 1300px
+		background-position: 0 0
+		span
+			width: 56px
+			height: 42px
+			bottom: 0
+			right: 0
+	.st2-1
+		left: 155px
+		top: 1300px
+		background-position: -155px 0
+		span
+			top: 113px
+			left: 0
+			width: 100%
+			height: 42px
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -155px -113px
+	.st2-2
+		left: 310px
+		top: 1300px
+		background-position: -310px 0
+		span[name="fruc"]
+			top: 110px
+			left: 0px
+			width: 68px
+			height: 69px
+		span[name="boot"]
+			top: 134px
+			left: -1px
+			width: 20px
+			height: 49px
+	.st2-3
+		left: 465px
+		top: 1300px
+		background-position: -465px 0
+		span
+			top: 27px
+			left: 0
+			width: 110px
+			height: 128px
+		span[name="fru"] + span[name="fru"]
+			top: 28px
+			left: 107px
+			width: 53px
+			height: 34px
+		span[name="mobile"]
+			left: 110px
+			width: 88px
+			height: 93px
+			top: 63px
+	.st2-4
+		left: 615px
+		top: 1300px
+		background-position: -615px 0
+		span[name="fru"]
+			left: 0
+			top: 26px
+			width: 14px
+			height: 37px
+		span[name="mobile"]
+			width: 84px
+			height: 93px
+			top: 63px
+	.st2-5
+		left: 770px
+		top: 1300px
+		background-position: -770px 0
+		// 2
+	.st2-6
+		top: 1300px
+		left: 0
+		background-position: 0 -155px
+		span
+			right: 0
+			width: 58px
+			height: 100%
+			top: 0
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -99px -152px
+	.st2-7
+		top: 1300px
+		left: 155px
+		background-position: -155px -156px
+		span
+			top: 0
+			left: 0
+			width: 138px
+			height: 156px
+		span[name="fruc"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -155px -156px
+	.st2-8
+		top: 1300px
+		left: 310px
+		background-position: -310px -156px
+		width: 154px
+		span
+			width: 75px
+			height: 29px
+			top: 0
+			left: -10px
+	.st2-9
+		top: 1300px
+		left: 463px
+		background-position: -463px -156px
+		span
+			top: 60px
+			left: 47px
+			width: 117px
+			height: 156px
+	.st2-9
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -510px -217px
+	.st2-10
+		top: 1300px
+		left: 615px
+		background-position: -615px -156px
+		span[name="mobile"]
+			top: 0
+			left: 0
+			width: 84px
+			height: 30px
+		span[name="one"]
+			top: 68px
+			width: 122px
+			height: 96px
+		span[name="fru"]
+			top: 29px
+			left: 0
+			width: 14px
+			height: 39px
+	.st2-11
+		top: 1300px
+		left: 770px
+		background-position: -770px -155px
+		// 3
+
+	.st2-12
+		top: 1300px
+		left: 0
+		background-position: 0 -310px
+		height: 156px
+		span
+			right: 0
+			height: 99px
+			width: 58px
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -97px -310px
+	.st2-13
+		top: 1300px
+		left: 155px
+		background-position: -155px -310px
+		span
+			width: 139px
+			height: 97px
+			top: 0
+			left: 0
+		span[name="photo"]
+			top: 133px
+			left: 0
+			height: 55px
+			width: 138px
+		span[name="photo"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -155px -442px
+		span[name="fruc"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -155px -310px
+	.st2-14
+		top: 1300px
+		left: 310px
+		background-position: -310px -310px
+	.st2-15
+		top: 1300px
+		left: 465px
+		background-position: -465px -310px
+		span[name="bike"]
+			width: 108px
+			height: 74px
+			left: 44px
+			top: 83px		
+		span[name="micro"]
+			top: 0
+			left: 44px
+			width: 115px
+			height: 61px
+	.st2-15.hover
+		span[name="bike"]
+			background-image: url("../img/AlmondHover.png")
+			background-position: -509px -393px
+	.st2-15
+		span[name="micro"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -509px -310px
+	.st2-16
+		span[name="micro"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -615px -310px
+	.st2-16
+		top: 1300px
+		left: 615px
+		background-position: -615px -310px
+		span[name="micro"]
+			position: absolute
+			top: 0
+			left: 0px
+			width: 12px
+			height: 62px
+		span[name="bike"]
+			width: 149px
+			height: 72px
+			left: 0
+			top: 83px
+	.st2-16.hover
+		span[name="bike"]
+			background-image: url("../img/AlmondHover.png")
+			background-position: -615px -393px
+	.st2-17
+		top: 1300px
+		left: 770px
+		background-position: -770px -310px
+		// 4
+	.st2-18
+		top: 1300px
+		left: 0
+		background-position: 0 -465px
+		span[name="oneLife"]
+			top: 109px
+			left: 38px
+			width: 104px
+			height: 106px
+		span[name="photo"]
+			width: 13px
+			height: 143px
+			right: 0
+			top: 0
+		span[name="photo"].hover
+			background-position: -143px -464px
+			background-image: url("../img/AlmondHover.png")
+	.st2-19
+		top: 1300px
+		left: 155px
+		background-position: -155px -462px
+		span
+			width: 139px
+			height: 100%
+			top: 0
+			left: 0
+	.st2-19
+		span.hover
+			background-position: -155px -462px
+			background-image: url("../img/AlmondHover.png")
+	.st2-20
+		top: 1300px
+		left: 310px
+		background-position: -310px -465px
+	.st2-21
+		top: 1300px
+		left: 465px
+		background-position: -465px -465px
+		span
+			top: 0
+			left: 43px
+			width: 100%
+			height: 157px
+	.st2-21.hover
+		span
+			background-image: url("../img/AlmondHover.png")
+			background-position: -508px -465px
+	.st2-22
+		top: 1300px
+		left: 615px
+		background-position: -615px -465px
+		span
+			width: 148px
+			height: 155px
+			top: 0
+			left: 0
+	.st2-22.hover
+		span
+			background-image: url("../img/AlmondHover.png")
+			background-position: -615px -465px
+	.st2-23
+		top: 1300px
+		left: 770px
+		background-position: -770px -465px
+		span
+			width: 158px
+			height: 118px
+			top: 0
+			left: -3px
+		// 5
+	.st2-24
+		top: 1300px
+		left: 0
+		background-position: 0 -615px
+		span
+			width: 105px
+			right: 14px
+			height: 100%
+			top: 0
+		span[name="photo"]
+			right: -1px
+			top: -4px
+			width: 14px
+			height: 44px
+		span[name="photo"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -143px -611px
+		span[name="oneLife"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -36px -616px
+	.st2-25
+		top: 1300px
+		left: 155px
+		background-position: -155px -615px
+		span[name="photo"]
+			top: 0
+			left: 0
+			width: 138px
+			height: 73px
+		span[name="oneLife"]
+			top: 72px
+			left: 0
+			width: 142px
+			height: 83px
+		span[name="photo"].hover
+			background-position: -155px -615px
+			background-image: url("../img/AlmondHover.png")
+		span[name="oneLife"].hover
+			background-position: -155px -687px
+			background-image: url("../img/AlmondHover.png")
+
+	.st2-26
+		top: 1300px
+		left: 310px
+		background-position: -310px -615px
+		span
+			top: 139px
+			height: 17px
+			width: 116px
+			left: -7px
+		span[name="oneLife"].hover
+			background-position: -303px -754px
+			background-image: url("../img/AlmondHover.png")
+	.st2-27
+		top: 1300px
+		left: 465px
+		background-position: -465px -615px
+		span[name="bike"]
+			top: -4px
+			left: 45px
+			width: 110px
+			height: 11px
+		span[name="babina"]
+			top: 115px
+			left: -1px
+			width: 156px
+			height: 40px
+		span[name="babina"] + span[name="babina"]
+			top: 7px
+			left: 44px
+			width: 112px
+			height: 127px
+		span[name="babina"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -464px -730px
+		span[name="babina"] + span[name="babina"].hover
+			background-position: -510px -623px
+			background-image: url("../img/AlmondHover.png")
+	.st2-27.hover
+		span[name="bike"]
+			background-image: url("../img/AlmondHover.png")
+			background-position: -510px -607px
+	.st2-28
+		top: 1300px
+		left: 615px
+		background-position: -615px -615px
+		span[name="babina"]
+			width: 86px
+			height: 150px
+			top: 5px
+			left: 0
+		span[name="bike"]
+			width: 64px
+			height: 105px
+			top: -26px
+			left: 86px
+		span[name="bike"] + span[name="bike"]
+			top: 0
+			left: 0
+			height: 6px
+			width: 85px
+
+		span[name="babina"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -615px -621px
+
+	.st2-28.hover
+		span[name="bike"]
+			background-image: url("../img/AlmondHover.png")
+			background-position: -701px -589px
+		span[name="bike"] + span[name="bike"]
+			background-image: url("../img/AlmondHover.png")
+			background-position: -615px -612px
+	.st2-29
+		top: 1300px
+		left: 770px
+		background-position: -770px -615px
+		// 6
+	.st2-30
+		top: 1300px
+		left: 0
+		background-position: 0 -770px
+		span
+			left: 36px
+			height: 155px
+			width: 133px
+			top: 0
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -35px -773px
+	.st2-31
+		top: 1300px
+		left: 155px
+		background-position: -155px -770px
+		span
+			width: 100%
+			height: 100%
+			top: 0
+			left: 0
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -155px -770px
+	.st2-32
+		top: 1300px
+		left: 310px
+		background-position: -310px -770px
+		span
+			top: 1px
+			width: 108px
+			left: 0
+			height: 155px
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -310px -770px
+	.st2-33
+		top: 1300px
+		left: 465px
+		background-position: -465px -770px
+		span
+			top: 0
+			left: -4px
+			width: 159px
+			height: 119px
+		span[name="babina"]
+			background-position: -465px -770px
+		span[name="babina"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -461px -769px
+	.st2-34
+		top: 1300px
+		left: 615px
+		background-position: -615px -770px
+		span
+			width: 88px
+			height: 118px
+			top: 0
+			left: 0
+		span[name="babina"].hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -615px -770px
+	.st2-35
+		top: 1300px
+		left: 770px
+		background-position: -770px -770px
+	// 7
+	.st2-36
+		top: 1300px
+		left: 0
+		background-position: 0 -925px
+		span
+			width: 119px
+			height: 57px
+			left: 36px
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -35px -924px
+	.st2-37
+		top: 1300px
+		left: 155px
+		background-position: -155px -925px
+		span
+			width: 100%
+			height: 54px
+			top: 0
+			left: 0
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -155px -925px
+	.st2-38
+		top: 1300px
+		left: 310px
+		background-position: -310px -925px
+		span
+			width: 108px
+			height: 52px
+			top: 0
+			left: 0
+		span.hover
+			background-image: url("../img/AlmondHover.png")
+			background-position: -310px -925px
+
+	.st2-39
+		top: 1300px
+		left: 465px
+		background-position: -465px -925px
+	.st2-40
+		top: 1300px
+		left: 615px
+		background-position: -615px -925px
+	.st2-41
+		top: 1300px
+		left: 770px
+		background-image: none
+	.st2-42
+		top: 1300px
+		right: 2px
+	.st2-43
+		top: 1300px
+		right: 2px
+
+	// planshet
+	.sMicro
+		top: 1300px
+		right: 0
+	.micro
+		top: 1300px
+		right: 39px
+		display: block
+		width: 415px
+	// bike
+	.sBike
+		top: 1300px
+		right: 0
+	.bike
+		top: 1300px
+		right: 39px
+		display: block
+		width: 645px
+	// photo
+	.sPhoto
+		top: 1300px
+		right: 3px
+	.photo
+		top: 1300px
+		right: 42px
+		display: block
+		width: 645px
+	// oneLife
+	.sOneLife
+		top: 1300px
+		right: 2px
+	.oneLife
+		top: 1300px
+		right: 41px
+		display: block
+		width: 645px
+	// fruc
+	.sFruc
+		top: 1300px
+		right: 0
+	.fruc
+		top: 1300px
+		right: 39px
+		display: block
+		width: 645px
+	// babina
+	.sBabina
+		top: 1300px
+		right: 2px
+	.babina
+		top: 1300px
+		right: 41px
+		display: block
+		width: 645px
+	// buttle
+	.sButtle
+		top: 1300px
+		right: 2px
+	.buttle
+		top: 1300px
+		right: 41px
+		display: block
+		width: 645px	
+// hover orange\
+.hover-orange
+	position: absolute
+	bottom: 300px
+	left: 288px
+	width: 41px
+	height: 24px
+	background: url(../img/citrusHover.png) no-repeat -26px -78px
+	z-index: 3
+
+.box h2,
+h3,
+p,
+.button a,
+.yellow-text h3,
+.yellow-text p,
+.orange nav a,
+.text
+	font-family: "HeliosLight"
