@@ -1,140 +1,137 @@
-app.initGinger = function(){
+ app.initGinger = function(){
 
-	$('#ginger').hide();
+	app.elements.ginger.hide();
 
-	$('.blue img').on({
-		mouseenter : function(){
-			app.gingerImageHover();
-		}
-	});
+	app.gElement = {
+		clock : $('span[name="clock"]'),
+		clockText: $('.clock, .sClock'),
+		car : $('span[name="car"]'),
+		carText : $('.car, .sCar'),
+		one : $('span[name="one"]'),
+		oneText : $('.sOne, .one'),
+		boot: $('span[name="boot"]'),
+		bootText : $('.sBoot, .boot'),
+		fru: $('span[name="fru"]'),
+		fruText : $('.sFru, .fru'),
+		mobile : $('span[name="mobile"]'),
+		mobileText : $('.mobile, .sMobile'),
+		buttleText : $('#ginger .buttle, #ginger .sButtle')
+	}
 
-	app.carElement = $('.sCar, .car');
-	app.oneElement = $('.sOne, .one');
-	app.bootElement = $('.sBoot, .boot');
-	app.fruElement = $('.sFru, .fru');
-	app.mobileElement = $('.sMobile, .mobile');
-	app.clockElement = $('.sClock, .clock');
-
+	app.gingerHover();
 	app.showGinger();
-	app.startGinger();
 	app.clock();
 	app.car();
 	app.one();
 	app.boot();
 	app.fru();
 	app.mobile();
+	app.buttleGinger();
+	app.gingerClick();
 };
+app.animateGinger = function(){
+	var s1 = app.elements.ginger.find('.s1');
+	s1.css({
+		'position' : 'relative',
+		'top' : '1300px'
+	});
 
+	app.elements.citrus.hide();
+	app.elements.almond.hide();
+	app.elements.ginger.show();
+	app.elements.container.height(5500);
+
+	app.gElement.clockText.show().css('top', '-500px');
+	app.gElement.carText.show().css('top', '-500px');
+	app.gElement.oneText.show().css('top', '-500px');
+	app.gElement.bootText.show().css('top', '-500px');
+	app.gElement.fruText.show().css('top', '-500px');
+	app.gElement.mobileText.show().css('top', '-500px');
+	app.gElement.buttleText.show().css('top', '-500px');
+
+	$('html').getNiceScroll().resize();
+	app.controller.removeTween('body');
+	app.startGinger();
+
+	TweenMax.staggerTo(s1, 0.1,{
+		'top' : 0
+	}, 0.1);
+}
 app.showGinger= function(){
-	var ginger = $('.logo-scroll').find('.box.b');
 
-	ginger.on({
+	var blue = $('.blue');
+	var blueImg = blue.find('img');
+	blueImg.on({
 		click : function(e){
 			e.preventDefault();
-
-			if( $(this).is('.now') ) return;
-
-			var second = $('body').scrollTop() === 0 ? 0 : 3;
-			var s1 = $('#ginger .s1');
+			var s1 = app.elements.ginger.find('.s1');
 			s1.css({
 				'position' : 'relative',
 				'top' : '1300px'
 			});
 
-			app.carElement.hide().css('top', '1300px');
-			app.oneElement.hide().css('top', '1300px');
-			app.bootElement.hide().css('top', '1300px');
-			app.fruElement.hide().css('top', '1300px');
-			app.mobileElement.hide().css('top', '1300px');
-			app.clockElement.hide().css('top', '1300px');
+			app.elements.citrus.hide();
+			app.elements.almond.hide();
+			app.elements.ginger.show();
+			app.elements.container.height(5500);
 
-			TweenMax.to($('body'), second, {
-				scrollTop: 0,
-				onComplete: show
+			app.gElement.clockText.show().css('top', '-500px');
+			app.gElement.carText.show().css('top', '-500px');
+			app.gElement.oneText.show().css('top', '-500px');
+			app.gElement.bootText.show().css('top', '-500px');
+			app.gElement.fruText.show().css('top', '-500px');
+			app.gElement.mobileText.show().css('top', '-500px');
+			app.gElement.buttleText.show().css('top', '-500px');
+
+			app.elements.htmlBody.animate({
+				'scrollTop' : 925
+			}, 300);
+			
+			$('html').getNiceScroll().resize();
+			app.controller.removeTween('body');
+			app.startGinger();
+
+			TweenMax.staggerTo(s1, 0.1,{
+				'top' : 0
+			}, 0.1);
+		},
+		mouseenter : function(){
+			TweenMax.to(blue, .3, {
+				'marginTop' : '-50'
 			});
+		},
+		mouseleave : function(){
+			if( app.elements.ginger.is( ':visible' ) ) return
 
-			function show(){
-				// $('html, body').scrollTop(0);
-				$('#orange').hide();
-				$('#almond').hide();
-				$('#ginger').show();
-				$('#container').height(7300);
-				TweenMax.staggerTo(s1, 0.1,{
-					'top' : 0
-				}, 0.1);
-				// app.controller.triggerCheckAnim(true);
-				// $('.st4-30').css('top','1300px')
-			}
+			TweenMax.to(blue, .3, {
+				marginTop : 0
+			});	
 		}
 	});
 };
 
-app.gingerImageHover = function(){
-	
-	$('#main').fadeOut(function(){
+app.gingerClick = function(){
 
-		var s1 = $('#ginger .s1');
-		s1.css({
-			'position' : 'relative',
-			'top' : '1300px'
+	$('.logo-scroll').find('.box.b').on('click', function(){
+		if( $(this).is( '.now' ) ) return;
+
+		app.elements.htmlBody.animate({
+			'scrollTop' : 940
+		}, 600, function(){
+			app.animateGinger();
 		});
 
-		app.carElement.hide().css('top', '1300px');
-		app.oneElement.hide().css('top', '1300px');
-		app.bootElement.hide().css('top', '1300px');
-		app.fruElement.hide().css('top', '1300px');
-		app.mobileElement.hide().css('top', '1300px');
-		app.clockElement.hide().css('top', '1300px');
+	});
 
-		$('#orange').hide();
-		$('#almond').hide();
-		$('#ginger').fadeIn(function(){
-			// $('html, body').scrollTop(0);
-			$('#container').height(7300);
-				TweenMax.staggerTo(s1, 0.1,{
-						'top' : 0
-				}, 0.1);
-			});
-		});
-
-		// app.controller.triggerCheckAnim(true);
-};
+}
 
 app.clock = function(){
-
-	function show(){
-		app.controller.addTween('body', 
-			TweenMax.to($('.sClock, .clock'),.5,{
-				top: '465px',
-				onStart: function(){
-					$('.sClock, .clock').show()
-				}
-			}),
-			0,
-		2500);
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sClock, .clock'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.sClock, .clock').css('top', '1300px')
-				}
-			}),
-			0,
-		3150);
-
-	}
-
-	show();
-	hide();
 
 	$('.sClock').on('click', function(e){
 
 		e.preventDefault();
 
-		if(  $('.clock').css('display') === 'block' ||   $('.clock').css('display') === 'inline' ){
+		if(  $('.clock').is(':visible') ){
 			$('.clock').hide();
 		}
 		else{
@@ -144,63 +141,20 @@ app.clock = function(){
 	});
 
 	$('span[name="clock"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 2500,
-				onComplete: function(){
-					app.controller.triggerCheckAnim(true);
-				}
-			});
-		// app.controller.triggerCheckAnim(true);
-		// show();
-		// hide();
-
-		$('.sCar, .car').hide();
-		$('.sOne, .one').hide();
-		$('.sBoot, .boot').hide();
-		$('.sFru, .fru').hide();
-		$('.sMobile, .mobile').hide();
-		$('.sClock, .clock').show();
-
+		app.elements.htmlBody.animate({
+			'scrollTop' : 3500
+		}, 400)
 	});
 
 
 };
 app.car = function(){
 
-	function show(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sCar, .car'),.5,{
-				top: '271px',
-				onStart: function(){
-					$('.sCar, .car').show();
-				}
-			}),
-		0,
-		3900);
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sCar, .car'),.5,{
-				top: '-500px',
-				onComplete: function(){
-						$('.sCar, .car').css('top', '1300px')
-				}
-			}),
-			0,
-		4550);
-
-	}
-
-	show();
-	hide();
-
 	$('.sCar').on('click', function(e){
 
 		e.preventDefault();
 
-		if( $('.car').css('display') === 'block' ||   $('.car').css('display') === 'inline' ){
+		if( $('.car').is(':visible') ){
 			$('.car').hide();
 		}
 		else{
@@ -210,61 +164,19 @@ app.car = function(){
 	});
 
 	$('span[name="car"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 3900,
-				onComplete: function(){
-					app.controller.triggerCheckAnim(true);
-				}
-			});
-		// app.controller.triggerCheckAnim(true);
-		// show();
-		// hide();
-
-		$('.sClock, .clock').hide();
-		$('.sOne, .one').hide();
-		$('.sBoot, .boot').hide();
-		$('.sFru, .fru').hide();
-		$('.sMobile, .mobile').hide();
-		$('.sCar, .car').show();
+		app.elements.htmlBody.animate({
+			'scrollTop' : 2900
+		}, 400)
 	});
 
 };
 app.one = function(){
 
-	function show(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sOne, .one'),.5,{
-				top: '576px',
-				onStart: function(){
-					$('.sOne, .one').show();
-				}
-			}),
-		0,
-		3000);
-
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sOne, .one'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.sOne, .one').css('top', '1300px')
-				}
-			}),
-		0,
-		3600);
-	}
-
-	show();
-	hide();
-
 	$('.sOne').on('click', function(e){
 
 		e.preventDefault();
 
-		if( $('.one').css('display') === 'block' ||   $('.one').css('display') === 'inline' ){
+		if( $('.one').is(':visible') ){
 			$('.one').hide();
 		}
 		else{
@@ -274,63 +186,19 @@ app.one = function(){
 	});
 
 	$('span[name="one"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 3000,
-				onComplete: function(){
-					app.controller.triggerCheckAnim(true);
-				}
-			});
-		// app.controller.triggerCheckAnim(true);
-		// show();
-		// hide();
-
-		$('.sClock, .clock').hide();
-		$('.sCar, .car').hide();
-		$('.sBoot, .boot').hide();
-		$('.sFru, .fru').hide();
-		$('.sMobile, .mobile').hide();
-		$('.sOne, .one').show();
+		app.elements.htmlBody.animate({
+			'scrollTop' : 3900
+		}, 400)
 	});
 
 };
 app.boot = function(){
 
-	function show(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sBoot, .boot'),.5,{
-				top: '271px',
-				onStart: function(){
-					$('.sBoot, .boot').show();
-				}
-			}),
-		0,
-		4550);
-
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sBoot, .boot'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.sBoot, .boot').css('top', '1300px')
-				}
-			}),
-		0,
-		5000);
-
-	}
-
-	show();
-	hide();
-
-
 	$('.sBoot').on('click', function(e){
 
 		e.preventDefault();
 
-		if( $('.boot').css('display') === 'block' ||   $('.boot').css('display') === 'inline' ){
+		if( $('.boot').is(':visible') ){
 			$('.boot').hide();
 		}
 		else{
@@ -340,60 +208,18 @@ app.boot = function(){
 	});
 
 	$('span[name="boot"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 4400,
-				onComplete: function(){
-					app.controller.triggerCheckAnim(true);
-				}
-			});
-		// app.controller.triggerCheckAnim(true);
-		// show();
-		// hide();
-
-		$('.sClock, .clock').hide();
-		$('.sCar, .car').hide();
-		$('.sOne, .one').hide();
-		$('.sFru, .fru').hide();
-		$('.sMobile, .mobile').hide();
-		$('.sBoot, .boot').show();
+		app.elements.htmlBody.animate({
+			'scrollTop' : 2500
+		}, 400)
 	});
 };
 app.fru = function(){
-
-	function show(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sFru, .fru'),.5,{
-				top: '576px',
-				onStart: function(){
-					$('.sFru, .fru').show();
-				}
-			}),
-		0,
-		5350);
-
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sFru, .fru'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.sFru, .fru').css('top', '1300px')
-				}
-			}),
-		0,
-		5700);
-	}
-
-	show();
-	hide();
 
 	$('.sFru').on('click', function(e){
 
 		e.preventDefault();
 
-		if( $('.fru').css('display') === 'block' ||   $('.fru').css('display') === 'inline' ){
+		if( $('.fru').is( ':visible' ) ){
 			$('.fru').hide();
 		}
 		else{
@@ -403,59 +229,18 @@ app.fru = function(){
 	});
 
 	$('span[name="fru"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 5350,
-				onComplete: function(){
-					app.controller.triggerCheckAnim(true);
-				}
-			});
-		// app.controller.triggerCheckAnim(true);
-		// show();
-		// hide();
-
-		$('.sClock, .clock').hide();
-		$('.sCar, .car').hide();
-		$('.sOne, .one').hide();
-		$('.sBoot, .boot').hide();
-		$('.sMobile, .mobile').hide();
-		$('.sFru, .fru').show();
+		app.elements.htmlBody.animate({
+			'scrollTop' : 1500
+		}, 400)
 	});
 };
 
 app.mobile = function(){
 
-	function show(){
-		app.controller.addTween('body', 
-			TweenMax.to($('.sMobile, .mobile'),.5,{
-				top: '116px',
-				onStart: function(){
-					$('.sMobile, .mobile').show();
-				}
-			}),
-		0,
-		5350);
-	}
-	function hide(){
-		app.controller.addTween('body', 
-			TweenMax.to($('.sMobile, .mobile'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.sMobile, .mobile').css('top', '1300px')
-				}
-			}),
-		0,
-		6000);
-	}
-
-	show();
-	hide();
-
 	$('.sMobile').on('click', function(e){
 
-		e.stopImmediatePropagation();
 		e.preventDefault();
-
-		if( $('.mobile').css('display') === 'block' ||  $('.mobile').css('display') === 'inline' ){
+		if( $('.mobile').is( ':visible' )){
 			$('.mobile').hide();
 		}
 		else{
@@ -465,350 +250,314 @@ app.mobile = function(){
 	});
 
 	$('span[name="mobile"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 5350,
-				onComplete: function(){
-					app.controller.triggerCheckAnim(true);
-				}
-			});
-		// app.controller.triggerCheckAnim(true);
-		// show();
-		// hide();
-
-		$('.sClock, .clock').hide();
-		$('.sCar, .car').hide();
-		$('.sOne, .one').hide();
-		$('.sBoot, .boot').hide();
-		$('.sFru, .fru').show();
-		$('.sMobile, .mobile').show();
+		app.elements.htmlBody.animate({
+			'scrollTop' : 1900
+		}, 400)
 	});
 }
+app.buttleGinger = function(){
 
+	$('#ginger .sButtle').on('click', function(e){
+		e.preventDefault();
 
+		if( $('#ginger .buttle').is( ':visible' ) ){
+			$('#ginger .buttle').hide();
+		}
+		else{
+			$('#ginger .buttle').show();
+		}
+
+	});
+}
+app.gingerHover = function(){
+
+	//clock
+	app.gElement.clock.hover(function(){
+
+		app.gElement.clock.addClass('hover');
+
+	}, function(){
+		if( !app.gElement.clock.is('.static') )
+			app.gElement.clock.removeClass('hover');
+
+	});
+
+	// one
+	app.gElement.one.hover(function(){
+		app.gElement.one.addClass('hover');
+
+	}, function(){
+		if( !app.gElement.one.is('.static') )
+			app.gElement.one.removeClass('hover');
+
+	});
+
+	// car
+	app.gElement.car.hover(function(){
+		app.gElement.car.addClass('hover');
+
+	}, function(){
+		if( !app.gElement.car.is('.static') )
+			app.gElement.car.removeClass('hover');
+	});
+
+	// boot
+	app.gElement.boot.hover(function(){
+		app.gElement.boot.addClass('hover');
+
+	}, function(){
+		if( !app.gElement.boot.is('.static') )
+			app.gElement.boot.removeClass('hover');
+	});
+
+	// fru
+	app.gElement.fru.hover(function(){
+		app.gElement.fru.addClass('hover');
+
+	}, function(){
+		if( !app.gElement.fru.is('.static') )
+			app.gElement.fru.removeClass('hover');
+	});
+
+	// mobile
+	app.gElement.mobile.hover(function(){
+		app.gElement.mobile.addClass('hover');
+
+	}, function(){
+		if( !app.gElement.mobile.is('.static') )
+			app.gElement.mobile.removeClass('hover');
+	});	
+
+}
+
+app.scrollGinger = function(scroll){
+
+	if( !app.elements.ginger.is(':visible') && !app.elements.body.is( ':animated' )) return;
+
+	// fruct
+	if( scroll >= 1400 && scroll < 1600 
+		&& app.gElement.fruText.css('top') != '117px' 
+		&& !TweenMax.isTweening( app.gElement.fruText ) ){
+		console.log( 'fruc' )
+		TweenMax.to(app.gElement.fruText, .4, {
+			top: 117
+		});
+		app.gElement.fru.addClass('hover static');
+	} 
+	else if( ( scroll >= 1700 || scroll <= 1300 )
+			&& app.gElement.fruText.css('top') != '-500px' 
+			&& !TweenMax.isTweening( app.gElement.fruText )){
+		TweenMax.to(app.gElement.fruText, .4, {
+			top: -500
+		});
+		app.gElement.fru.removeClass('hover static');
+	}
+
+	// mobile
+	if( scroll > 1800 && scroll <= 2200  
+		&& app.gElement.mobileText.css('top') != '117px' 
+		&& !TweenMax.isTweening( app.gElement.mobileText ) ){
+		console.log( 'mobile' )
+		TweenMax.to(app.gElement.mobileText, .4, {
+			top: 117
+		});
+		app.gElement.mobile.addClass('hover static');
+	} 
+	else if( ( scroll >= 2300 || scroll < 1800 ) 
+			&& app.gElement.mobileText.css('top') != '-500px' 
+			&& !TweenMax.isTweening( app.gElement.mobileText )){
+		TweenMax.to(app.gElement.mobileText, .4, {
+			top: -500
+		});
+		app.gElement.mobile.removeClass('hover static');
+	}
+
+	// boot
+	if( scroll > 2400 && scroll < 2700 
+		&& app.gElement.bootText.css('top') != '117px' 
+		&& !TweenMax.isTweening( app.gElement.bootText ) ){
+		console.log( 'boot' )
+		TweenMax.to(app.gElement.bootText, .4, {
+			top: 117
+		});
+		app.gElement.boot.addClass('hover static');
+	} 
+	else if( ( scroll >= 2800 || scroll <= 2300 )
+			&& app.gElement.bootText.css('top') != '-500px' 
+			&& !TweenMax.isTweening( app.gElement.bootText )){
+		TweenMax.to(app.gElement.bootText, .4, {
+			top: -500
+		});
+		app.gElement.boot.removeClass('hover static');
+	}
+
+	// car
+	if( scroll > 2800 && scroll <= 3200 
+		&& app.gElement.carText.css('top') != '117px' 
+		&& !TweenMax.isTweening( app.gElement.carText ) ){
+		console.log( 'car' )
+		TweenMax.to(app.gElement.carText, .4, {
+			top: 117
+		});
+		app.gElement.car.addClass('hover static');
+	} 
+	else if( ( scroll >= 3300 || scroll <= 2700 )
+			&& app.gElement.carText.css('top') != '-500px' 
+			&& !TweenMax.isTweening( app.gElement.carText )){
+		TweenMax.to(app.gElement.carText, .4, {
+			top: -500
+		});
+		app.gElement.car.removeClass('hover static');
+	}
+
+	// clock
+	if( scroll > 3400 && scroll < 3600
+		&& app.gElement.clockText.css('top') != '117px' 
+		&& !TweenMax.isTweening( app.gElement.clockText ) ){
+		console.log( 'clock' )
+		TweenMax.to(app.gElement.clockText, .4, {
+			top: 117
+		});
+		app.gElement.clock.addClass('hover static');
+	} 
+	else if( ( scroll >= 3700 || scroll <= 3300 )
+			&& app.gElement.clockText.css('top') != '-500px' 
+			&& !TweenMax.isTweening( app.gElement.clockText )){
+		TweenMax.to(app.gElement.clockText, .4, {
+			top: -500
+		});
+		app.gElement.clock.removeClass('hover static');
+	}
+
+	// one
+	if( scroll > 3800 && scroll < 4100 
+		&& app.gElement.oneText.css('top') != '117px' 
+		&& !TweenMax.isTweening( app.gElement.oneText ) ){
+		console.log( 'one' )
+		TweenMax.to(app.gElement.oneText, .4, {
+			top: 117
+		});
+		app.gElement.one.addClass('hover static');
+	} 
+	else if( ( scroll >= 4200 || scroll <= 3700 )
+			&& app.gElement.oneText.css('top') != '-500px' 
+			&& !TweenMax.isTweening( app.gElement.oneText )){
+		TweenMax.to(app.gElement.oneText, .4, {
+			top: -500
+		});
+		app.gElement.one.removeClass('hover static');
+	}
+
+	// buttle
+	if( scroll > 4400 && scroll < 4800 
+		&& app.gElement.buttleText.css('top') != '117px' 
+		&& !TweenMax.isTweening( app.gElement.buttleText ) ){
+		console.log( 'buttle' )
+		TweenMax.to(app.gElement.buttleText, .4, {
+			top: 117
+		});
+	} 
+	else if( ( scroll <= 4100) 
+			&& app.gElement.buttleText.css('top') != '-500px' 
+			&& !TweenMax.isTweening( app.gElement.buttleText )){
+		TweenMax.to(app.gElement.buttleText, .4, {
+			top: -500
+		});
+	}
+}
 app.startGinger = function(){
 
+	if( !app.elements.ginger.is( ':visible' ) ) return
+
+	var fru = [
+		$('.st4-2'), $('.st4-3'), $('.st4-8'), $('.st4-9')
+	];
+
+	var mobile = [
+		$('.st4-4'), $('.st4-10')
+	];
+
+	var boot = [
+		$('.st4-13'), $('.st4-0'), $('.st4-1'),
+		$('.st4-6'), $('.st4-7'), $('.st4-12')
+	];
+
+	var car = [
+		$('.st4-19'), $('.st4-18'), $('.st4-24'), $('.st4-25'),
+		$('.st4-26'), $('.st4-30'), $('.st4-31'), $('.st4-32')
+	];
+
+	var clock = [
+		$('.st4-21'), $('.st4-22'),
+		$('.st4-27'), $('.st4-28')
+	];
+
+	var one = [
+		$('.st4-15'), $('.st4-16')
+	];
+
 
 	this.controller.addTween('body', 
-		TweenMax.to($('.st4-0'),.5,{
-			top: 0
-		}),
-		0,
-		450);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-19'),.5,{
-			top: 462
-		}),
-		0,
-		300);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-29'),.5,{
+		TweenMax.to( [ $('.st4-29'), car[2], car[3], car[4], clock[2], clock[3] ],.5,{
 			top: 615
 		}),
 		0,
-		450);
+		1300);
 
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-36'),.5,{
-			top: 925
-		}),
-		0,
-		600);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-8'),.5,{
-			top: 155
-		}),
-		0,
-		750);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-11'),.5,{
-			top: 155
-		}),
-		0,
-		4700);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-13'),.5,{
-			top: 309
-		}),
-		0,
-		1050);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-16'),.5,{
-			top: 310
-		}),
-		0,
-		1200);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-4'),.5,{
+	this.controller.addTween('body',
+		TweenMax.to( [ fru[0], fru[1], mobile[0], boot[1], boot[2], $('.st4-5')], .4,{
 			top: 0
 		}),
 		0,
-		1350);
+		1400);
 
 	this.controller.addTween('body', 
-		TweenMax.to($('.st4-26'),.5,{
-			top: 615
-		}),
-		0,
-		1500);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-40'),.5,{
+		TweenMax.to( [ $('.st4-36'), $('.st4-40'), $('.st4-39'), $('.st4-37'), $('.st4-38'), $('.st4-41'), $('.st5-1') ],.5,{
 			top: 925
-		}),
-		0,
-		1650);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-35'),.5,{
-			top: 770
 		}),
 		0,
 		1800);
 
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-32'),.5,{
-			top: 770
-		}),
-		0,
-		1950);
 
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-23'),.5,{
-			top: 465
-		}),
-		0,
-		6300);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-22'),.5,{
-			top: 465
-		}),
-		0,
-		2250);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-25'),.5,{
-			top: 615
-		}),
-		0,
-		2400);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-15'),.5,{
-			top: 310
-		}),
-		0,
-		2550);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-27'),.5,{
-			top: 615
-		}),
-		0,
-		2700);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-20'),.5,{
-			top: 465
-		}),
-		0,
-		2850);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-10'),.5,{
+	this.controller.addTween('body',
+		TweenMax.to( [  fru[2], fru[3], mobile[1], boot[3], boot[4], $('.st4-11') ], .4,{
 			top: 155
 		}),
 		0,
-		3000);
+		2200);
 
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-7'),.5,{
-			top: 155
-		}),
-		0,
-		3150);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-31'),.5,{
-			top: 770
-		}),
-		0,
-		3300);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-33'),.5,{
-			top: 770
-		}),
-		0,
-		3450);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-21'),.5,{
-			top: 465
-		}),
-		0,
-		2700);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-17'),.5,{
-			top: 310
-		}),
-		0,
-		6150);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-18'),.5,{
-			top: 465
-		}),
-		0,
-		3900);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-14'),.5,{
-			top: 310
-		}),
-		0,
-		2550);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-5'),.5,{
-			top: 0
-		}),
-		0,
-		5750);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-3'),.5,{
-			top: 0
-		}),
-		0,
-		5350);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-12 '),.5,{
+	this.controller.addTween('body',
+		TweenMax.to( [  boot[5], boot[0] ], .4,{
 			top: 309
 		}),
 		0,
-		3150);
+		2600);
 
 	this.controller.addTween('body', 
-		TweenMax.to($('.st4-9'),.5,{
-			top: 155
+		TweenMax.to( [ $('.st4-35'), car[5], car[6], car[7], $('.st4-33'), $('.st4-30'), $('.st4-34') ],.5,{
+			top: 770
 		}),
 		0,
 		3000);
 
 	this.controller.addTween('body', 
-		TweenMax.to($('.st4-28'),.5,{
-			top: 615
+		TweenMax.to( [ $('.st4-17'),  $('.st4-14'), one[0], one[1] ],.5,{
+			top: 310
 		}),
 		0,
-		3450);
+		3400);
 
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-24'),.5,{
-			top: 615
-		}),
-		0,
-		3650);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-6'),.5,{
-			top: 155
+	this.controller.addTween('body',
+		TweenMax.to( [  car[0], car[1], clock[0], clock[1], $('.st4-20'), $('.st4-23') ], .4,{
+			top: 465
 		}),
 		0,
 		3800);
 
 	this.controller.addTween('body', 
-		TweenMax.to($('.st4-2'),.5,{
-			top: 0
-		}),
-		0,
-		3950);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-1'),.5,{
-			top: 0
-		}),
-		0,
-		3300);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-30'),.5,{
-			top: 770
-		}),
-		0,
-		3900);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-30'),.5,{
-			top: 770
-		}),
-		0,
-		4400);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-34'),.5,{
-			top: 770
-		}),
-		0,
-		5600);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-37'),.5,{
-			top: 925
-		}),
-		0,
-		4700);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-38'),.5,{
-			top: 925
-		}),
-		0,
-		4850);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-39'),.5,{
-			top: 925
-		}),
-		0,
-		4000);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st4-41'),.5,{
-			top: 925
-		}),
-		0,
-		5150);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st5-0'),.5,{
-			top: 0
-		}),
-		0,
-		5900);
-
-	this.controller.addTween('body', 
-		TweenMax.to($('.st5-1'),.5,{
-			top: 925
-		}),
-		0,
-		5450);
-
-	this.controller.addTween('body', 
 		TweenMax.to($('#ginger .scrollBox'),.5,{
 			top: 0
 		}),
-		6150,
+		3800,
 		0);
-
-
 }

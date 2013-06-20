@@ -5,22 +5,17 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/css.css">
 	<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
+	<link rel="stylesheet" href="css/fonts.css">
 	
-	<script src="js/libs/modernizr-latest.js"></script>
-	<script src="js/libs/iscroll.js"></script>
-	<script src="js/libs/polyfill.requestAnimationFrame.js"></script>
 	<script src="js/libs/TweenMax.min.js"></script>
 	<script src="js/libs/jquery.min.js"></script>
-	<script src="js/libs/jquery.mousewheel.min.js"></script>
-	<script src="js/libs/jquery.superscrollorama.js"></script>
-	<script src="js/libs/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="js/libs/jquery.nicescroll.min.js"></script>
 
-	<script src="js/libs/cufon-yui.js"></script>
-	<script src="js/HeliosLight_300.font.js"></script>
 	<script src="js/init.js"></script>
 	<script src="js/orange.js"></script>
 	<script src="js/ginger.js"></script>
 	<script src="js/almond.js"></script>
+	<script src="js/slider-news.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -31,21 +26,29 @@
 					<div class="box">
 						<h2>Citrus punch</h2>
 					</div>
-					<div class="news">
+					<a class="news">
 						<h3>Новости</h3>
-					</div>
-					<a href="#" class="buttonNews"></a>
+					</a>
+					<a class="buttonNews"></a>
 				</div>
 				<!-- orange -->
 				<div class="orange">
 					<nav>
-						<a href="#">Главная</a>
-						<a href="#">Акции</a>
-						<a href="#">О нас</a>
+						<a href="/">Главная</a>
+						<a>Новости</a>
+						<a>GFD</a>
 					</nav>
 					<img src="img/orange-eon.png" alt=" " />
 					<div class="box-news">
-						<p>Алюминиевая банка сегодня является одним из самых удобных и экологичных видов упаковки. Однако ее главный минус заключается в том, что в большинстве случаев банку нельзя закрывать повторно, или хотя бы прикрывать, чтобы защитить содержимое от расплескивания во время движения или от попадания в напиток пыли и мусора.</p>
+					<!-- 	<div class="wrapper-news">
+							<p><a href="123">Алюминиевая банка сегодня является одним из самых удобных и экологичных видов упаковки. Однако ее главный минус заключается в том, что в большинстве случаев банку нельзя закрывать повторно, или хотя бы прикрывать, чтобы защитить содержимое от расплескивания во время движения или от попадания в напиток пыли и мусора.</a></p>
+							<p>
+								<a href="#"><img src="img/gingerLast.jpg" alt=" "></a>
+							</p>
+							<p>
+								При клике на пункт меню другого блока главной страницы автоматически происходит обратная прокрутка до изначального состояния главной страницы.
+							</p>
+						</div> -->
 					</div>
 				</div>
 				<!-- blues -->
@@ -97,199 +100,185 @@
 								</div>
 								<a href="#" class="buttonNews"></a>
 							</div>
-							
 						</div>
 						<div class="contnetScroll">
 							<!-- step1 -->
 								<!-- 1 -->
-								<div class="box o s1"></div>
-								<div class="box o s1"></div>
-								<div class="box o s1 s1-4"></div>
-								<div class="box o s1"></div>
-								<div class="box o s1"></div><br/>
-								<!-- 2 -->
-								<div class="box o s1 s1-6"></div>
-								<div class="box o s1"></div>
-								<div class="box o s1 s1-0"></div>
-								<div class="box o s1"></div>
-								<div class="box t s1"></div>
-								<!-- 3 -->
-								<div class="box t s1"></div>
-								<div class="box t s1"></div>
-								<div class="box o s1 s1-1"></div>
-								<div class="box o s1"></div>
-								<div class="box t s1"></div>
+								<div class="box s0-0 s1 animate"></div>
+							 	<div class="box s0-1 s1 animate"></div>
+							 	<div class="box s0-2 s1 animate"></div>
+							 	<div class="box s0-3 s1 animate"></div>
+							 	<div class="box s0-4 s1 animate"></div>
+
+							 	<div class="box s0-5 s1 animate"></div>
+							 	<div class="box s0-6 s1 animate"></div>
+							 	<div class="box s0-7 s1 animate"></div>
+							 	<div class="box s0-8 s1 animate"></div>
+							 	<div class="box s0-9 s1"></div>
+
+							 	<div class="box s0-10 s1"></div>
+							 	<div class="box s0-11 s1"></div>
+							 	<div class="box s0-12 s1 animate"></div>
+							 	<div class="box s0-13 s1 animate"></div>
+							 	<div class="box s0-14 s1"></div>
+
+							 	<div class="box s0-15 s1 animate"></div>
+							 	<div class="box s0-16 s1 animate"></div>
+							 	<div class="box s0-17 s1 animate"></div>
+							 	<div class="box s0-18 s1 animate"></div>
+							 	<div class="box s0-19 s1"></div>
+
+							 	<div class="box s0-20 s1"></div>
+							 	<div class="box s0-21 s1"></div>
+							 	<div class="box s0-22 s1 animate"></div>
+
+								<div class="box ste1-0 s2" id="ste1-0">
+									<span name="bridge"></span>
+								</div>
+								<div class="box ste1-1 s2" id="ste1-1">
+									<span name="bridge"></span>
+								</div>
+								<div class="box ste1-2 s2" id="ste1-2">
+									<span name="city"></span>
+								</div>
+								<div class="box ste1-3 s2" id="ste1-3">
+									<span name="city"></span>
+								</div>
+								<div class="box ste1-4 s2" id="ste1-4">
+									<span name="city"></span>
+								</div>
+								<div class="box ste1-5 s2" id="ste1-5"></div>
+						<!-- 2 -->
+								<div class="box ste1-6 s2" id="ste1-6">
+									<span name="bridge"></span>
+									<span name="plane"></span>
+								</div>
+								<div class="box ste1-7 s2" id="ste1-7">
+									<span name="bridge"></span>
+									<span name="plane"></span>
+								</div>
+								<div class="box ste1-8 s2" id="ste1-8">
+									<span name="city"></span>
+								</div>
+								<div class="box ste1-9 s2" id="ste1-9">
+									<span name="city"></span>
+									<span name="city"></span>
+								</div>
+								<div class="box ste1-10 s2" id="ste1-10">
+									<span name="city"></span>
+								</div>
+								<div class="box ste1-11 s2" id="ste1-11"></div>
+						<!-- 3 -->
+								<div class="box ste1-12 s2" id="ste1-12">
+									<span name="plane"></span>
+								</div>
+								<div class="box ste1-13 s2" id="ste1-13">
+									<span name="plane"></span>
+								</div>
+								<div class="box ste1-14 s2" id="ste1-14">
+									<span name="buttleOrange"></span>
+								</div>
+								<div class="box ste1-15 s2" id="ste1-15">
+									<span name="city"></span>
+								</div>
+								<div class="box ste1-16 s2" id="ste1-16">
+									<span name="city"></span>
+								</div>
+								<div class="box ste1-17 s2" id="ste1-17"></div>
 								<!-- 4 -->
-								<div class="box o s1"></div>
-								<div class="box o s1"></div>
-								<div class="box o s1 s1-5"></div>
-								<div class="box o s1 s1-2"></div>
-								<div class="box t s1"></div>
-								<!-- 5 -->
-								<div class="box t s1"></div>
-								<div class="box t s1"></div>
-								<div class="box o s1 s1-3"></div>
+								<div class="box ste1-18 s2" id="ste1-18">
+									<span name="plane"></span>
+									<span name="plane"></span>
+									<span name="fruit"></span>
+								</div>
+								<div class="box ste1-19 s2" id="ste1-19">
+									<span name="plane"></span>
+									<span name="fruit" class=""></span>
+								</div>
+								<div class="box ste1-20 s2" id="ste1-20"></div>
+								<div class="box ste1-21 s2" id="ste1-21">
+									<span name="moto"></span>
+									
+								</div>
+								<div class="box ste1-22 s2" id="ste1-22">
+									<span name="moto"></span>
+									<span name="life"></span>	
+								</div>
+								<div class="box ste1-23 s2" id="ste1-23">
+								</div>
+						<!-- 5 -->
+								<div class="box ste1-24 s2" id="ste1-24">
+									<span name="fruit"></span>
+								</div>
+								<div class="box ste1-25 s2" id="ste1-25">
+									<span name="fruit"></span>
+								</div>
+								<div class="box ste1-26 s2" id="ste1-26">
+									<span name="fruit"></span>
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-27 s2" id="ste1-27">
+									<span name="moto"></span>
+									<span name="life"></span>
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-28 s2" id="ste1-28">
+									<span name="moto"></span>
+									<span name="life"></span>
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-29 s2" id="ste1-29"></div>
+								<!-- 6 -->
+								<div class="box ste1-30 s2" id="ste1-30">
+						
+								</div>
+								<div class="box ste1-31 s2" id="ste1-31">
+									
+								</div>
+								<div class="box ste1-32 s2" id="ste1-32">
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-33 s2" id="ste1-33">
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-34 s2" id="ste1-34">
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-35 s2" id="ste1-35"></div>
+								<!-- 7 -->
+								<div class="box ste1-36 s2" id="ste1-36">
+			
+								</div>
+								<div class="box ste1-37 s2" id="ste1-37">
+					
+								</div>
+								<div class="box ste1-38 s2" id="ste1-38">
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-39 s2" id="ste1-39">
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-40 s2" id="ste1-40">
+									<span name="life"></span>
+								</div>
+								<div class="box ste1-41 s2" id="ste1-41"></div>
+								<div class="box ste1-43 s2" id="ste1-43"></div>
+
 							<!-- step2 -->
-								<!-- 1 -->
-								<div class="box t"></div>
-								<div class="box t"></div>
-								<div class="box t"></div>		
-								<!-- <div class="box o s2"></div> -->
-								<!-- 2 -->
-								<div class="box t"></div>
-								<div class="box t"></div>
-								<div class="box t"></div>
-								<div class="box t"></div>
-								<div class="box o s2-1" style="top: 1300px; right: 155px; position:absolute;"></div>
-								<!-- 3 -->
-								<div class="box t"></div>
-								<div class="box o s2-2">
-									<span name="fruit"></span>
-								</div>
-								<div class="box o s2-3">
-									<span name="fruit"></span>
-								</div>
-								<!-- 4 -->
-								<div class="box o s2-4">
-									<span name="fruit"></span>
-								</div>
-								<div class="box o s2-5">
-									<span name="fruit"></span>
-								</div>
-								<!-- 5 -->
-
-							<!-- step 3 -->
-								<div class="box o s3-1"></div>
-								<div class="box o s3-2">
-									<span name="fruit"></span>
-								</div>
-								<div class="box o s3-3"></div>
-								<div class="box o s3-4"></div>
-								<div class="box o s3-5"></div>
-								<div class="box o s3-6">
-									<span name="life"></span>
-								</div>
-								<div class="box o s3-13"></div>
-								<div class="box o s3-14"></div>
-
-								<div class="box o s3-7"></div>
-								<div class="box o s3-8">
-									<span name="life"></span>
-								</div>
-								<div class="box o s3-12"></div>
-
-								<div class="box o s3-9">
-									<span name="fruit"></span>
-								</div>
-								<div class="box o s3-10">
-									<span name="fruit"></span>
-								</div>
-								<div class="box o s3-11">
-									<span name="fruit"></span>
-								</div>
-								<div class="box o s3-15">
-									<span name="life"></span>
-								</div>
-								<div class="box o s3-16"></div>
-							<!-- 3b -->
-								<div class="box o s4-1">
-									<span name="plane"></span>
-								</div>
-								<div class="box o s4-2">
-									<span name="plane"></span>
-									<span name="fruit"></span>
-								</div>
-								<div class="box o s4-3">
-									<span name="plane"></span>
-									<span name="fruit"></span>
-								</div>
-							<!-- 5 -->
-								<div class="box o s5-0"></div>
-								<div class="box o s5-1">
-									<span name="plane"></span>
-								</div>
-								<div class="box o s5-2">
-									<span name="plane"></span>
-								</div>
-								<div class="box o s5-3">
-									<span name="plane"></span>
-								</div>
-								<div class="box o s5-5">
-									<span name="plane"></span>
-								</div>
-							<!-- 6 -->
-								<div class="box o s6-0">
-									<span name="plane"></span>
-								</div>
-								<div class="box o s6-1">
-									<span name="plane"></span>
-								</div>
-								<div class="box o s6-2">
-									<span name="city"></span>
-								</div>
-								<div class="box o s6-3">
-									<span name="city"></span>
-								</div>
-								<div class="box o s6-4">
-									<span name="city"></span>
-								</div>
-								<div class="box o s6-5">
-									<span name="city"></span>
-								</div>
-								<div class="box o s6-6">
-									<span name="city"></span>
-								</div>
-								<div class="box o s6-7">
-									<span name="life"></span>
-									<span name="life"></span>
-								</div>
-								<div class="box o s6-8">
-									<span name="life"></span>
-								</div>
-								<div class="box o s6-10">
-									<span name="life"></span>
-								</div>
-								<div class="box o s6-12"></div>
-							<!-- 7 -->
-								<div class="box o s7-0"></div>
-								<div class="box o s7-1">
-									<span name="scoter"></span>
-								</div>
-								<div class="box o s7-2">
-									<span name="scoter"></span>
-								</div>
-								<div class="box o s7-3">
-									<span name="life"></span>
-								</div>
-								<div class="box o s7-4"></div>
-								<div class="box o s7-5"></div>
-								<div class="box o s7-6"></div>
-								<div class="box o s7-7"></div>
-								<div class="box o s7-8"></div>
-							<!-- 8 -->
-								<div class="box o s8-0">
-									<span name="plane"></span>
-								</div>
-								<div class="box o s8-1"></div>
-								<div class="box o s8-2"></div>
-								<div class="box o s8-3"></div>
-
-								<div class="box o s8-4"></div>
-								<div class="box o s8-5">
-									<span name="life"></span>
-								</div>
-								<div class="box o s8-6">
-									<span name="life"></span>
-								</div>
-								<div class="box o s8-7"></div>
-
+			
 							<a href="#" class="buttonNews s2-7"></a>
 							<a href="#" class="buttonNews sCity"></a>
 							<a href="#" class="buttonNews sLife"></a>
 							<a href="#" class="buttonNews sScoter"></a>
 							
-							<a href="#" class="buttonNews s2-6" style="top: 1100px;right: 116px;position:absolute;"></a>
-							<p class="fruit">Бодрящий букет с нотами грейпфрута, апельсина и лимона приятно освежает, тонизирует и пробуждает волю к новым достижениям. E-ON Citrus Punch – это выбор тех, кто привык действовать и все успевать.</p>
+							<a href="#" class="buttonNews s2-6" style="position:absolute;"></a>
+							<p class="fruit">Почувствуй бодрящую свежесть цитрусовых!<br/>
+								Яркий вкус E-ON CITRUS PUNCH на основе соков грейпфрута, лимона и апельсина приятно освежает мысли и пробуждает волю к новым достижениям. Гармоничное сочетание активных компонентов тонизирует и дает силы довести любое дело до конца и насладиться результатом. <br/>
+								Из чего: Натуральный апельсиновый, лимонный и грейпфрутовый сок<br/>
+								С чем: Витамины В1, B6, PP, B5, Bc, биотин, B12<br/>
+								С чем ещё: Кофеин и таурин<br/>
+								Без чего: Без консервантов</br>
+							</p>
 
 							<p class="plane">
 								Это был мой первый отпуск за 3 года. Самолет улетал в 6 утра. Моя девушка поставила будильники во всех гаджетах, какие были в доме, но ни один из них не смог разбудить нас вовремя. Мы проснулись в 5 утра, а дорога до аэропорта – это как раз около часа пути. Мы схватили наши сумки (к счастью, собранные заранее) и банку E-ON Citrus Punch, которую выпили в лифте вместо нашего традиционного утреннего апельсинового фрэша. Такси поблизости не наблюдалось, поэтому нам пришлось совершить 10-минутную пробежку до метро, проскользнув в первый утренний поезд через закрывающиеся двери. Потом был еще один короткий марш-бросок до автобуса в аэропорт, который отправился в путь, как только мы сели в него. Когда мы, наконец, добрались до аэропорта, девушка за стойкой регистрации призналась, что она как раз собиралась кликнуть на кнопку «Закрыть регистрацию». 
@@ -300,11 +289,26 @@
 								Бодрость всегда с тобой
 							</p>
 							<p class="life">
-								E-ON поддерживает жизненные силы и необходимый уровень энергии в любом виде деятельности в любое время, помогая ярче воспринимать моменты настоящего, быть максимально включенным в реальность, полнее и красочнее ощущать события жизни и чувствовать значимость своих достижений здесь и сейчас. E-ON. LIFE IS ON! Включись в жизнь!
+								Работа и выходные, семья и друзья, хобби и путешествия... Для кого-то это замкнутый круг. Для тебя это круг твоих интересов, которые наполняют твою жизнь смыслом и яркостью. Жаль, что не всегда хватает сил и энергии, чтобы все успевать и получать от жизни максимум удовольствия. Стать более эффективным и включиться в жизнь на все 100% тебе поможет E-ON – уникальный энергетический напиток для  насыщенной жизни во всем ее многообразии. Чем бы ты не занимался, E-ON избавит тебя от усталости, позволит сосредоточиться на важном и придаст сил, чтобы добиться большего. Открывай новые горизонты, стремись сделать все, что задумал, и наслаждайся каждым прожитым мгновением. Ведь не важно, сколько дней в твоей жизни – важно, сколько жизни в твоих днях!<br/>
+								E-ON! Life is on! Включись в жизнь!
 							</p>
 							<p class="scoter">
-								Я всегда мечтал прокатиться на скутере по Риму как кинозвезда 60-х, но, когда моя мечта осуществилась, мне хватило меньше часа, чтобы возненавидеть эту затею. Вместе с моей девушкой мы напрочь заблудились в Вечном городе. Вдобавок к этому у нас заканчивалось топливо. Мы уже были на грани отчаяния, как вдруг промелькнула искра надежды: наше внимание привлек какой-то парень на скутере в шлеме цветов российского флага. Мы бросились в погоню и через несколько кварталов, наконец, догнали его на светофоре, чтобы спросить дорогу. Оказалось, что это наш соотечественник, давно живущий в Риме. Он показал нам путь к нашему отелю через невероятно живописную апельсиновую рощу, наполненную чудесными ароматами. Теперь у меня собственный скутер и другая девушка, но воспоминания о той поездке возвращаются ко мне каждый раз, когда я открываю банку E-ON Citrus Punch, чтобы взбодриться перед стремительным рывком через город. 
+								Прокатиться по Риму на скутере мне хотелось всегда, будто кинозвезда 60-х.
+								К вечеру от красивой мечты ничего не осталось. Мы заблудились. Вечный город, казалось, смеялся над нами. Объятия прекрасной спутницы на заднем сидении успокаивали, но солнце клонилось к закату, бензин уже был на исходе, а мы никак не могли найти дорогу в отель и продолжали ехать куда-то. Отчаяние росло.
+								На очередном перекрестке, притормозив, мы неожиданно услышали знакомую речь. Мы даже не сразу узнали ее и успели проехать немного, так это было внезапно. Разворот на узкой улочке тоже отнял драгоценное время. А говоривший тем временем положил трубку, завел мопед и скрылся за поворотом. Несколько кварталов мы неслись за ним по пятам, пока наконец не поравнялись на светофоре. Оказалось, что наш соотечественник давно жил и работал в Риме. И конечно он знал нашу улицу. Кроме пары переулков нас отделяла от отеля живописная апельсиновая роща. Мы от души посмеялись втроем над нашим внезапным приключением. Потом я допил E-ON Citrus Punch, и мы распрощались. «Отличное место, чтобы заблудиться,» - улыбаясь совсем как местные жители, напоследок добавил наш новый знакомый.
 							</p>
+							<!-- buttle -->
+							<a href="#" class='buttonNews sButtle'></a>
+							<p class="buttle">
+								E-ON – это энергетический напиток, специально разработанный для динамичного образа жизни современного человека. E-ON помогает поддерживать жизненные силы и необходимый уровень энергии в любом виде деятельности. 
+								Сочетание натуральных соков, тщательно подобранных витаминов и активных веществ в составе энергетического напитка E-ON оказывает мягкое, но длительное тонизирующее воздействие на организм. А стильная алюминиевая банка E-ON с выразительным, но сдержанным дизайном выглядит уместно в любой ситуации – от деловых переговоров до тренировки в фитнес-клубе. 
+								Добавь энергии в свою жизнь с любым из трех уникальных вкусов E-ON!
+							</p>
+							<!-- bridge -->
+							<a href="#" class='buttonNews sBridge'></a>
+							<p class="bridge">
+								В туристических путеводителях перечислены десятки мест, откуда в Сан-Франциско можно рассмотреть знаменитый мост Golden Gate. «Путеводители для ленивых», - подумал я и видам на мост предпочел виды с моста. Для этого мне пришлось совершить, наверное, самую длинную пешую прогулку за последние несколько лет. По тротуару East Sidewalk я добрался до середины Golden Gate и, словно отключившись от окружающего мира, долго вглядывался в водную гладь пролива в лучах заходящего солнца. Когда я «очнулся», вокруг было подозрительно безлюдно: пешеходы исчезли, и лишь изредка мимо проносились велосипедисты. «Hurry up, it’s closing», – крикнул мне один из них. «Закрывается?!» – удивился я, а в следующую секунду вспомнил, как американский коллега предупреждал меня, что вечером Golden Gate закрывается для пешеходов. Перспектива провести ночь на мосту меня не прельщала, я залпом допил E-ON Almond Rush и побежал к выходу. За 10 минут я преодолел эти полтора километра, а на противоположном берегу, в Hendrik Point, меня ждал потрясающий вид на вечерний Сан-Франциско, подсвеченный огнями мост Golden Gate и такси. 
+							</p>	
 						</div>
 
 					</div>
@@ -480,16 +484,14 @@
 						<div class="box st4-40 s4"></div>
 						<div class="box st4-41 s4"></div>
 						<!-- Last -->
-						<div class="st5-0 box s5">
+						<!-- <div class="st5-0 box s5">
 							<span name="mobile"></span>
-						</div>
+						</div> -->
 						<div class="st5-1 box b s5"></div>
 						<!-- clock -->
 						<a href="#" class="buttonNews sClock"></a>
 						<p class="text clock">
-							Не обязательно рано вставать, чтобы все успевать<br/>
-							Освежает не только вода<br/>
-							Куда бы ты не отправился, запас энергии не помешает
+							Остаться без денег на другом конце света – казалось бы, безвыходная ситуация. Мы с женой опоздали в Тайланде на самолет домой. Деньги кончились, кредитки пусты, телефоны опустошены роумингом. «Придется что-то продать», – то ли в шутку, то ли всерьез сказала жена. «А это мысль, – ответил я. – Я даже знаю, что можно продать. Мои часы». Когда отец подарил мне на 30-летие дорогой хронограф, я был здорово удивлен. Ну кто сегодня носит часы? Но… Открыв банку E-ON Ginger Crush, я нашел в словаре «ломбард» по-тайски. Водитель такси понял меня с полуслова будто каждый день возил «банкротов» вроде меня. В подозрительном районе он остановил машину у лавки скупщика золота и драгоценностей. Мысленно извинившись перед отцом, я отдал часы торговцу, выручив за них пару тысяч долларов – в два раза меньше реальной цены часов. Но на билеты домой этих денег хватало с запасом. А через месяц я отыскал и купил точно такой же хронограф. Интересно, вдруг отец специально подарил мне дорогие часы не только, чтобы следить за временем.
 						</p>
 						<!-- car -->
 						<a href="#" class="buttonNews sCar"></a>
@@ -499,8 +501,8 @@
 						<!-- life -->
 						<a href="#" class="buttonNews sOne"></a>
 						<p class="text one">
-							E-ON поддерживает жизненные силы и необходимый уровень энергии в любом виде деятельности в любое время, помогая ярче воспринимать моменты настоящего, быть максимально включенным в реальность, полнее и красочнее ощущать события жизни и чувствовать значимость своих достижений здесь и сейчас. 
-							E-ON. LIFE IS ON! Включись в жизнь!
+							Работа и выходные, семья и друзья, хобби и путешествия... Для кого-то это замкнутый круг. Для тебя это круг твоих интересов, которые наполняют твою жизнь смыслом и яркостью. Жаль, что не всегда хватает сил и энергии, чтобы все успевать и получать от жизни максимум удовольствия. Стать более эффективным и включиться в жизнь на все 100% тебе поможет E-ON – уникальный энергетический напиток для  насыщенной жизни во всем ее многообразии. Чем бы ты не занимался, E-ON избавит тебя от усталости, позволит сосредоточиться на важном и придаст сил, чтобы добиться большего. Открывай новые горизонты, стремись сделать все, что задумал, и наслаждайся каждым прожитым мгновением. Ведь не важно, сколько дней в твоей жизни – важно, сколько жизни в твоих днях!<br/>
+							E-ON! Life is on! Включись в жизнь!
 						</p>
 						<!-- boot -->
 						<a href="#" class="buttonNews sBoot"></a>
@@ -515,7 +517,19 @@
 						<!-- frut -->
 						<a href="#" class="buttonNews sFru"></a>
 						<p class="text fru">
-							Взрывное сочетание сладкого граната, кислой клюквы и пряного имбиря заряжает отличным настроением и стимулирует внутренние силы. E-ON Ginger Crush создан для тех, кто чувствует пульс жизни, замечая все детали.
+							Раскрой взрывной темперамент вкусов!
+							Дерзкая вспышка вкусов сладкого граната, кислой клюквы и пряного имбиря в E-ON GINGER CRUSH пробуждает творческую энергию и внутренние силы организма. Уникальный баланс витаминов и активных веществ надолго заряжает отличным настроением и помогает сосредоточить внимание. 
+
+							Из чего: Натуральный гранатовый сок<br/>
+							С чем: Витамины В1, B6, PP, B5, Bc, биотин, B12<br/>
+							С чем ещё: Кофеин, таурин, L-карнитин<br/>
+							Без чего: Не содержит консервантов
+						</p>
+						<a href="#" class='buttonNews sButtle'></a>
+						<p class="buttle text">
+								E-ON – это энергетический напиток, специально разработанный для динамичного образа жизни современного человека. E-ON помогает поддерживать жизненные силы и необходимый уровень энергии в любом виде деятельности. 
+								Сочетание натуральных соков, тщательно подобранных витаминов и активных веществ в составе энергетического напитка E-ON оказывает мягкое, но длительное тонизирующее воздействие на организм. А стильная алюминиевая банка E-ON с выразительным, но сдержанным дизайном выглядит уместно в любой ситуации – от деловых переговоров до тренировки в фитнес-клубе. 
+								Добавь энергии в свою жизнь с любым из трех уникальных вкусов E-ON!
 						</p>
 					</div>
 				</div>
@@ -641,6 +655,7 @@
 						<!-- 5 -->
 						<div class="box st2-24 s2">
 							<span name="oneLife"></span>
+							<span name="photo"></span>
 						</div>
 						<div class="box st2-25 s2">
 							<span name="photo"></span>
@@ -650,11 +665,13 @@
 							<span name="oneLife"></span>
 						</div>
 						<div class="box st2-27 s2">
+							<span name="bike"></span>
 							<span name="babina"></span>
 							<span name="babina"></span>
 						</div>
 						<div class="box st2-28 s2">
 							<span name="babina"></span>
+							<span name="bike"></span>
 							<span name="bike"></span>
 						</div>
 						<div class="box st2-29 s2"></div>
@@ -712,33 +729,48 @@
 						<!-- oneLife -->
 						<a href="#" class="buttonNews sOneLife"></a>
 						<p class="text oneLife">
-							E-ON поддерживает жизненные силы и необходимый уровень энергии в любом виде деятельности в любое время, помогая ярче воспринимать моменты настоящего, быть максимально включенным в реальность, полнее и красочнее ощущать события жизни и чувствовать значимость своих достижений здесь и сейчас. 
-							E-ON. LIFE IS ON! Включись в жизнь!
+							Работа и выходные, семья и друзья, хобби и путешествия... Для кого-то это замкнутый круг. Для тебя это круг твоих интересов, которые наполняют твою жизнь смыслом и яркостью. Жаль, что не всегда хватает сил и энергии, чтобы все успевать и получать от жизни максимум удовольствия. Стать более эффективным и включиться в жизнь на все 100% тебе поможет E-ON – уникальный энергетический напиток для  насыщенной жизни во всем ее многообразии. Чем бы ты не занимался, E-ON избавит тебя от усталости, позволит сосредоточиться на важном и придаст сил, чтобы добиться большего. Открывай новые горизонты, стремись сделать все, что задумал, и наслаждайся каждым прожитым мгновением. Ведь не важно, сколько дней в твоей жизни – важно, сколько жизни в твоих днях!<br/>
+							E-ON! Life is on! Включись в жизнь!
 						</p>
 						<!-- fruc -->
 						<a href="#" class="buttonNews sFruc"></a>
 						<p class="text fruc">
-							Неординарный микс свежести лимона и ароматной миндальной горчинки прекрасно тонизирует и освежает. E-ON Almond Rush – это энергетический напиток для тех, кто стремится в любых обстоятельствах сохранять активность и свежий взгляд на жизнь.
+							Ощути изысканное вдохновение миндаля!<br />
+							Оригинальный микс бодрящего лимонного сока и ароматной миндальной горчинки в E-ON ALMOND RUSH создает вдохновляющую волну энергии и заряжает оптимизмом. Специально подобранные тонизирующие компоненты помогают сохранить активность и позитивный взгляд на жизнь в любых обстоятельствах. <br />
+
+							Из чего: Натуральный лимонный сок<br/>
+							С чем: Витамины В1, B6, PP, B5, Bc, биотин, B12<br/>
+							С чем ещё: Кофеин и таурин<br/>
+							Без чего: Без консервантов<br/>
+
 						</p>
 						<!-- babina -->
 						<a href="#" class="buttonNews sBabina"></a>
 						<p class="text babina">
 							Музыка превращает меня в другого человека. И, думаю, не меня одного. Когда диджей в клубе ставит твой любимый трек, ты буквально теряешь контроль над собой. Но, увы, у диджея собственный плей-лист и он вряд ли будет играть твои любимые треки всю ночь. На мой прошлый день рождения друзья подарили мне диджейскую стойку. Отличная штука! Я начал устраивать домашние вечеринки каждую субботу, чтобы играть мою любимую музыку. К каждой вечеринке я покупал новые пластинки. Я познакомился с кучей людей, которые, как и я, без ума от музыки. И я определенно превращался в другого человека каждую ночь, когда я вставал за стойку. Меня было не остановить. А когда у моих друзей кончались силы, я угощал их E-ON Almond Rush, и вечеринка продолжалась до самого утра. 
 						</p>
+						<!-- buttle -->
+						<a href="#" class="buttonNews sButtle"></a>
+						<p class="text buttle">
+							E-ON – это энергетический напиток, специально разработанный для динамичного образа жизни современного человека. E-ON помогает поддерживать жизненные силы и необходимый уровень энергии в любом виде деятельности. 
+							Сочетание натуральных соков, тщательно подобранных витаминов и активных веществ в составе энергетического напитка E-ON оказывает мягкое, но длительное тонизирующее воздействие на организм. А стильная алюминиевая банка E-ON с выразительным, но сдержанным дизайном выглядит уместно в любой ситуации – от деловых переговоров до тренировки в фитнес-клубе. 
+							Добавь энергии в свою жизнь с любым из трех уникальных вкусов E-ON!
+						</p>
 					</div>
 				</div>
 			</div>
 		</section>
 	</div>
+
 	<script>
-		Cufon.replace('.box h2');
-		Cufon.replace('h3');
-		Cufon.replace('p');
-		Cufon.replace('.button a');
-		Cufon.replace('.yellow-text h3');
-		Cufon.replace('.yellow-text p');
-		Cufon.replace('.orange nav a');
-		Cufon.replace('.text');
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-41650538-1', 'eon-energydrink.ru');
+		  ga('send', 'pageview');
+
 	</script>
 
 </body>

@@ -30,16 +30,26 @@
 		var animObjects = [],
 			pinnedObjects = [],
 			scrollContainerOffset = {x: 0, y: 0},
-			doUpdateOnNextTick = false;
+			doUpdateOnNextTick = false,
+			targetOffset,
+			i;
 
 		// PRIVATE FUNCTIONS
-
+		function scroll(){
+			var $scroll = $window.scrollTop();
+			app.scrollCitrus($scroll);
+			app.scrollGinger($scroll);
+			app.scrollAlmond($scroll);
+			app.scroll = $scroll;
+			checkScrollAnim();
+			// doUpdateOnNextTick = true;
+		}
 		function init() {
 			// set event handlers
-			$window.scroll(function() {
-				doUpdateOnNextTick = true;
-			});
-			TweenLite.ticker.addEventListener("tick", tickHandler);
+			$window.on({
+				scroll : $.throttle( 600, scroll )
+			})
+			// TweenLite.ticker.addEventListener("tick", tickHandler);
 		}
 
 		function cssNumericPosition ($elem) { // return 0 when value is auto
@@ -87,13 +97,14 @@
 
 			// check all animObjects
 			var numAnim = animObjects.length;
+
 			for (i=0; i<numAnim; i++) {
 				var animObj = animObjects[i],
 					target = animObj.target,
 					offset = animObj.offset;
 
 				if (typeof(target) === 'string') {
-                    var targetOffset = $(target).offset();
+                    targetOffset = $(target).offset();
 					startPoint = superscrollorama.settings.isVertical ? targetOffset.top + scrollContainerOffset.y : targetOffset.left + scrollContainerOffset.x;
 					offset += offsetAdjust;
 				} else if (typeof(target) === 'number')	{
@@ -101,7 +112,7 @@
 				} else if ($.isFunction(target)) {
 					startPoint = target.call(this);
 				} else {
-                    var targetOffset = target.offset();
+                    targetOffset = target.offset();
                     startPoint = superscrollorama.settings.isVertical ? targetOffset.top + scrollContainerOffset.y : targetOffset.left + scrollContainerOffset.x;
 					offset += offsetAdjust;
 				}
@@ -134,17 +145,21 @@
 				} else if (animObj.state === 'TWEENING') {
 					// if it is TWEENING..
 					var repeatIndefinitely = false;
-					if (animObj.tween.repeat) // does the tween even have the repeat option (TweenMax / TimelineMax)
-						repeatIndefinitely = (animObj.tween.repeat() == -1);
+					if (animObj.tween.repeat) {
+						// does the tween even have the repeat option (TweenMax / TimelineMax)
+						repeatIndefinitely = (animObj.tween.repeat() === -1);
+					}
 
 					if (repeatIndefinitely) { // if the animation loops indefinitely it will just play for the time of the duration
 						var playheadPosition = animObj.tween.totalProgress(); // there is no "isPlaying" value so we need to save the playhead to determin wether the animation is running
 						if (animObj.playeadLastPosition === null || playheadPosition === animObj.playeadLastPosition) {
-							if (playheadPosition == 1) {
-								if (animObj.tween.yoyo()) // reverse Playback with infinitely looped tweens only works with yoyo true
+							if (playheadPosition === 1) {
+								if (animObj.tween.yoyo()) {
+									// reverse Playback with infinitely looped tweens only works with yoyo true
 									animObj.tween.reverse();
-								else
+								} else {
 									animObj.tween.totalProgress(0).play();
+								}
 							} else {
 								animObj.tween.play();
 							}
@@ -158,18 +173,19 @@
 
 			// check all pinned elements
 			var numPinned = pinnedObjects.length;
+			console.log( numPinned );
 			for (i=0; i<numPinned; i++) {
 				var pinObj = pinnedObjects[i];
 				var el = pinObj.el;
 
 				// should object be pinned (or updated)?
-				if (pinObj.state != 'PINNED') {
+				if (pinObj.state !== 'PINNED') {
 
-					if (pinObj.state === 'UPDATE') resetPinObj(pinObj); // revert to original Position so startPoint and endPoint will be calculated to the correct values
-
+					if (pinObj.state === 'UPDATE') {
+						resetPinObj(pinObj); // revert to original Position so startPoint and endPoint will be calculated to the correct values
+					}
 
 					startPoint = superscrollorama.settings.isVertical ? pinObj.spacer.offset().top + scrollContainerOffset.y : pinObj.spacer.offset().left + scrollContainerOffset.x;
-
 					startPoint += pinObj.offset;
 
 					endPoint = startPoint + pinObj.dur;
@@ -178,7 +194,7 @@
 					var inPinAra = (currScrollPoint > startPoint && currScrollPoint < endPoint);
 					if (inPinAra || jumpedPast) {
 						// set original position values for unpinning
-						if (pinObj.pushFollowers && el.css('position') == "static") { // this can't be. If we want to pass following elements we need to at least allow relative positioning
+						if (pinObj.pushFollowers && el.css('position') === "static") { // this can't be. If we want to pass following elements we need to at least allow relative positioning
 							el.css('position', "relative");
 						}
 						// save original positioning
@@ -222,8 +238,9 @@
 
 
 						if (pinObj.state === "UPDATE") {
-							if (pinObj.anim)
+							if (pinObj.anim) {
 								setTweenProgress(pinObj.anim, 0); // reset the progress, otherwise the animation won't be updated to the new position
+							}
 						} else if (pinObj.onPin) {
 							pinObj.onPin(pinObj.state === "AFTER");
 						}
@@ -258,10 +275,10 @@
 						resetPinObj(pinObj);
 
 						// position element correctly
-						if (!pinObj.pushFollowers || pinObj.origPositioning.pos == "absolute") {
+						if (!pinObj.pushFollowers || pinObj.origPositioning.pos === "absolute") {
 							var pinOffset;
 
-							if (pinObj.origPositioning.pos == "relative") { // position relative and pushFollowers = false
+							if (pinObj.origPositioning.pos === "relative") { // position relative and pushFollowers = false
 								pinOffset = superscrollorama.settings.isVertical ?
 											parseFloat(pinObj.origPositioning.top) :
 											parseFloat(pinObj.origPositioning.left);
@@ -288,9 +305,9 @@
 						if (deltax !== 0) {
 							pinObj.el.css("left", cssNumericPosition(pinObj.el).left - deltax);
 						}
-
-						if (pinObj.onUnpin)
+						if (pinObj.onUnpin) {
 							pinObj.onUnpin(!before);
+						}
 					} else if (pinObj.anim) {
 						// do animation
 						setTweenProgress(pinObj.anim, (currScrollPoint - pinObj.pinStart)/(pinObj.pinEnd - pinObj.pinStart));
@@ -317,13 +334,17 @@
 		};
 
 		superscrollorama.pin = function(el, dur, vars) {
-			if (typeof(el) === 'string') el = $(el);
+			if (typeof(el) === 'string') {
+				el = $(el);
+			}
 			var defaults = {
 				offset: 0,
 				pushFollowers: true		// if true following elements will be "pushed" down, if false the pinned element will just scroll past them
 			};
 			vars = $.extend({}, defaults, vars);
-			if (vars.anim) vars.anim.pause();
+			if (vars.anim) {
+				vars.anim.pause();
+			}
 
 			var spacer = $('<div class="superscrollorama-pin-spacer"></div>');
 			spacer.css("position", "relative");
@@ -342,45 +363,59 @@
 				onPin:vars.onPin,
 				onUnpin:vars.onUnpin
 			});
-
 			return superscrollorama;
 		};
 
 		superscrollorama.updatePin = function (el, dur, vars) { // Update a Pinned object. dur and vars are optional to only change vars and keep dur just pass NULL for dur
-			if (typeof(el) === 'string') el = $(el);
-			if (vars.anim) vars.anim.pause();
+			if (typeof(el) === 'string') {
+				el = $(el);
+			}
+			if (vars.anim) {
+				vars.anim.pause();
+			}
+
 			var numPinned = pinnedObjects.length;
 
 			for (i=0; i<numPinned; i++) {
 				var pinObj = pinnedObjects[i];
-				if (el.get(0) == pinObj.el.get(0)) {
+				if (el.get(0) === pinObj.el.get(0)) {
 
-					if (dur) pinObj.dur = dur;
-					if (vars.anim) pinObj.anim = vars.anim;
-					if (vars.offset) pinObj.offset = vars.offset;
+					if (dur) {
+						pinObj.dur = dur;
+					}
+					if (vars.anim) {
+						pinObj.anim = vars.anim;
+					}
+					if (vars.offset) {
+						pinObj.offset = vars.offset;
+					}
 					if (typeof vars.pushFollowers !== "undefined") {
 						pinObj.pushFollowers = vars.pushFollowers;
 					}
-					if (vars.onPin) pinObj.onPin = vars.onPin;
-					if (vars.onUnpin) pinObj.onUnpin = vars.onUnpin;
-
+					if (vars.onPin) {
+						pinObj.onPin = vars.onPin;
+					}
+					if (vars.onUnpin) {
+						pinObj.onUnpin = vars.onUnpin;
+					}
 					if ((dur || vars.anim || vars.offset) && pinObj.state === 'PINNED') { // this calls for an immediate update!
 						pinObj.state = 'UPDATE';
 						checkScrollAnim();
 					}
 				}
 			}
-
 			return superscrollorama;
 		};
-		
+
 		superscrollorama.removeTween = function (target, tween, reset) {
 			var count = animObjects.length;
-			if (typeof reset === "undefined") reset = true;
+			if (typeof reset === "undefined") {
+				reset = true;
+			}
 			for (var index = 0; index < count; index++) {
 				var value = animObjects[index];
-				if (value.target == target &&
-					(!tween || value.tween == tween)) { // tween is optional. if not set just remove element
+				if (value.target === target &&
+					(!tween || value.tween === tween)) { // tween is optional. if not set just remove element
 					animObjects.splice(index,1);
 					if (reset) {
 						setTweenProgress(value.tween, 0);
@@ -389,13 +424,16 @@
 					index--;
 				}
 			}
-			
 			return superscrollorama;
-		}
-		
+		};
+
 		superscrollorama.removePin = function (el, reset) {
-			if (typeof(el) === 'string') el = $(el);
-			if (typeof reset === "undefined") reset = true;
+			if (typeof(el) === 'string') {
+				el = $(el);
+			}
+			if (typeof reset === "undefined") {
+				reset = true;
+			}
 			var count = pinnedObjects.length;
 			for (var index = 0; index < count; index++) {
 				var value = pinnedObjects[index];
@@ -412,9 +450,8 @@
 					index--;
 				}
 			}
-			
 			return superscrollorama;
-		}
+		};
 
 		superscrollorama.setScrollContainerOffset = function (x, y) {
 			scrollContainerOffset.x = x;

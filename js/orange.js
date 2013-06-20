@@ -1,288 +1,423 @@
 app.initOrange = function(){
 
-	$('#orange').hide();
+	app.elements.citrus.hide();
 
-	$('.orange img').on({
-		mouseenter : function(){
-			app.orangeImageHover();
-		}
-	});
+	app.oElement = {
+		city : $('span[name="city"]'),
+		cityText: $('.city, .sCity'),
+		bridge : $('span[name="bridge"]'),
+		bridgeText : $('.bridge, .sBridge'),
+		plane : $('span[name="plane"]'),
+		planeText : $('.s2-7, .plane'),
+		fruc: $('span[name="fruit"]'),
+		frucText : $('.s2-6, .fruit'),
+		scuter: $('span[name="moto"]'),
+		scuterText : $('.sScoter, .scoter'),
+		life : $('span[name="life"]'),
+		lifeText : $('.sLife, .life'),
+		buttleText : $('#orange .buttle, #orange .sButtle'),
+		scrollBox : $('#orange .scrollBox'),
+		buttle : $('span[name="buttleOrange"]')
+	}
 
-	app.scoterElement = $('.sScoter, .scoter');
-	app.lifeElement = $('.life, .sLife');
-	app.planeElement = $('.plane, .s2-7');
-	app.cityElement = $('.city, .sCity');
-	app.fruitElement = $('.s2-6, .fruit');
-
+	app.orangeHover();
 	app.showOrange();
-	app.startOrange();
 	app.fruit();
 	app.plane();
 	app.city();
 	app.scoter();
-	app.life();		
+	app.life();
+	app.bridge();
+	app.orangeButtle();
+	app.orangeClick();
 
+	app.scrollO = {
+		bridge : [
+			document.getElementById('ste1-0'),
+			document.getElementById('ste1-1'),
+			document.getElementById('ste1-6'),
+			document.getElementById('ste1-7')
+
+		],
+		city : [
+			document.getElementById('ste1-2'),
+			document.getElementById('ste1-3'),
+			document.getElementById('ste1-4'),
+			document.getElementById('ste1-8'),
+			document.getElementById('ste1-9'),
+			document.getElementById('ste1-10'),
+			document.getElementById('ste1-15'),
+			document.getElementById('ste1-16')
+		],
+		plane : [
+			document.getElementById('ste1-12'),
+			document.getElementById('ste1-13'),
+			document.getElementById('ste1-19'),
+			document.getElementById('ste1-18'),
+		],
+		fruct : [
+			document.getElementById('ste1-24'),
+			document.getElementById('ste1-25')
+		],
+		scuter : [
+			document.getElementById('ste1-21'),
+			document.getElementById('ste1-22'),
+			document.getElementById('ste1-27'),
+			document.getElementById('ste1-28')
+		],
+		other_5  : document.getElementById('ste1-5'),
+		other_11 : document.getElementById('ste1-11'),
+		other_13 : document.getElementById('ste1-13'),
+		other_14 : document.getElementById('ste1-14'),
+		other_16 : document.getElementById('ste1-16'),
+		other_17 : document.getElementById('ste1-17'),
+		other_20 : document.getElementById('ste1-20'),
+		other_22 : document.getElementById('ste1-22'),
+		other_23 : document.getElementById('ste1-23'),
+		other_26 : document.getElementById('ste1-26'),
+		other_29 : document.getElementById('ste1-29'),
+		other_30 : document.getElementById('ste1-30'),
+		other_31 : document.getElementById('ste1-31'),
+		other_32 : document.getElementById('ste1-32'),
+		other_33 : document.getElementById('ste1-33'),
+		other_34 : document.getElementById('ste1-34'),
+		other_35 : document.getElementById('ste1-35'),
+		other_36 : document.getElementById('ste1-36'),
+		other_37 : document.getElementById('ste1-37'),
+		other_38 : document.getElementById('ste1-38'),
+		other_39 : document.getElementById('ste1-39'),
+		other_40 : document.getElementById('ste1-40'),
+		other_41 : document.getElementById('ste1-41'),
+		other_43 : document.getElementById('ste1-43')
+	}
 };
-app.showOrange = function(){
-	var orange = $('.logo-scroll').find('.box.o');
 
-	orange.on({
+app.animateOrange = function(){
+
+	var s1 = app.elements.citrus.find('.animate');
+		s1.css('top','1300px');
+
+	app.elements.ginger.hide();
+	app.elements.almond.hide();
+	app.elements.citrus.show();
+
+	app.oElement.cityText.show().css('top', '-500px');
+	app.oElement.bridgeText.show().css('top', '-500px');
+	app.oElement.planeText.show().css('top', '-500px');
+	app.oElement.frucText.show().css('top', '-500px');
+	app.oElement.scuterText.show().css('top', '-500px');
+	app.oElement.lifeText.show().css('top', '-500px');
+	app.oElement.buttleText.show().css('top', '-500px');
+
+	$('html').getNiceScroll().resize();
+
+	TweenMax.to(s1, 0,{scale : 0});
+	TweenMax.staggerTo(s1, .1,{
+		'top' : 0,
+		scale : 1,
+		onComplete : function(){
+			app.startOrange();
+		}
+	}, .1);
+
+	// 0
+	TweenMax.to( [ 
+		app.scrollO.bridge[0], 
+		app.scrollO.bridge[1], 
+		app.scrollO.city[0],
+		app.scrollO.city[1], 
+		app.scrollO.city[2],
+		app.scrollO.other_5 ],0, {
+			scale : 0,
+			top: -500
+	})
+	// 155
+	TweenMax.to( [ 
+		app.scrollO.bridge[2], 
+		app.scrollO.bridge[3], 
+		app.scrollO.city[3],
+		app.scrollO.city[4], 
+		app.scrollO.city[5],
+		app.scrollO.other_11 ],0, {
+		scale : 0,
+		top: -500
+	});
+	// 310
+	TweenMax.to( [ 
+		app.scrollO.city[6], 
+		app.scrollO.city[7], 
+		app.scrollO.other_14,
+		app.scrollO.other_17, 
+		app.scrollO.other_16,
+		app.scrollO.plane[0], 
+		app.scrollO.plane[1], 
+		app.scrollO.other_13 ], 0, {
+			scale : 0,
+			top: -500
+	});
+	//  465
+	TweenMax.to( [ 
+		app.scrollO.plane[3],
+		app.scrollO.scuter[0], 
+		app.scrollO.scuter[1], 
+		app.scrollO.other_22, 
+		app.scrollO.other_23,
+		app.scrollO.plane[2]
+	],0,{
+		scale : 0,
+		top: -500
+	})
+	// 615
+	TweenMax.to( [ 
+		app.scrollO.other_29, 
+		app.scrollO.other_26, 
+		app.scrollO.fruct[0], 
+		app.scrollO.fruct[1],
+		app.scrollO.scuter[2], 
+		app.scrollO.scuter[3] ],0,{
+			scale : 0,
+			top: -500
+	})
+	//  770
+	TweenMax.to( [ 
+		app.scrollO.other_35,  
+		app.scrollO.other_32, 
+	 	app.scrollO.other_31,  
+	 	app.scrollO.other_33, 
+	 	app.scrollO.other_30,  
+	 	app.scrollO.other_34 ],0,{
+			scale : 0,
+			top: -500
+	})
+	//  925 
+	TweenMax.to( [ 
+		app.scrollO.other_36, 
+		app.scrollO.other_40,
+		app.scrollO.other_36, 
+	 	app.scrollO.other_40,
+	 	app.scrollO.other_39, 
+	 	app.scrollO.other_37, 
+	 	app.scrollO.other_38, 
+	 	app.scrollO.other_41,
+	 	app.scrollO.other_43 ],0,{
+		scale : 0,
+		top: -500
+	})
+}
+
+app.showOrange = function(){
+	
+	var orange = $('.orange');
+	var orangeImg = orange.find('img');
+	var $window = $(window);
+
+	orangeImg.on({
 		click : function(e){
 			e.preventDefault();
 
-			if( $(this).is('.now') ) return;
+			app.elements.htmlBody.animate({
+				'scrollTop' : 925
+			}, 300);
+			app.animateOrange();
 
-			var second = $('body').scrollTop() === 0 ? 0 : 3;
-			var s1 = $('#orange .s1');
-				s1.css({
-				'position' : 'relative',
-				'top' : '1300px'
+		},
+		mouseenter : function(){
+			TweenMax.to(orange, .3, {
+				'marginTop' : '-50'
 			});
+		},
+		mouseleave : function(){
+			if( app.elements.citrus.is( ':visible' ) ) return
 
-			app.scoterElement.hide().css('top', '1300px');
-			app.lifeElement.hide().css('top', '1300px');
-			app.planeElement.hide().css('top', '1300px');
-			app.cityElement.hide().css('top', '1300px');
-			app.fruitElement.hide().css('top', '1300px');
-
-			TweenMax.to($('body'), second, {
-				scrollTop: 0,
-				onComplete: show
-			});
-
-
-			function show(){
-				$('html, body').scrollTop(0);
-
-				$('#ginger').hide();
-				$('#almond').hide();
-				$('#orange').show();
-
-				$('#container').height(9500);
-				TweenMax.staggerTo(s1, 0.1,{
-					'top' : 0
-				}, 0.1);
-				// app.controller.triggerCheckAnim(true);
-			}
-
+			TweenMax.to(orange, .3, {
+				marginTop : 0
+			});	
 		}
 	});
 
 };
-app.orangeImageHover = function(){
+app.orangeClick = function(){
 
-	$('#main').fadeOut(function(){
-		// $('html, body').scrollTop(0);
-		// app.controller.triggerCheckAnim(true);
-		
-		var s1 = $('#orange .s1');
-		s1.css({
-			'position' : 'relative',
-			'top' : '1300px'
+	$('.logo-scroll').find('.box.o').on('click', function(){
+		if( $(this).is( '.now' ) ) return;
+
+		app.elements.htmlBody.animate({
+			'scrollTop' : 940
+		}, 600, function(){
+			app.animateOrange();
 		});
-
-		app.scoterElement.hide().css('top', '1300px');
-		app.lifeElement.hide().css('top', '1300px');
-		app.planeElement.hide().css('top', '1300px');
-		app.cityElement.hide().css('top', '1300px');
-		app.fruitElement.hide().css('top', '1300px');
-
-		$('#ginger').hide();
-		$('#almond').hide();
-		$('#orange').fadeIn(function(){
-			$('#container').height(8500);
-				TweenMax.staggerTo(s1, 0.1,{
-						'top' : 0
-				}, 0.1);
-			
-		});
-
 	});
-};
+
+}
 
 app.fruit = function(){
-
-	function show(){
-		app.controller.addTween('body', 
-			TweenMax.to($('.s2-6, .fruit'),.5,{
-				css : {
-					top: '114px',
-					display: 'block'
-				},
-				onStart: function(){
-					$('.s2-6, .fruit').show()
-				}
-			}),
-			0,
-		650);
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.s2-6, .fruit'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.s2-6, .fruit').css('top', '1300px');
-				}
-			}),
-			0,
-		1500);
-
-	}
-
-	show();
-	hide();
 
 	$('.s2-6').on('click', function(e){
 		e.preventDefault()
 		
-		if( $('.fruit').is(':visible') )
+		if( $('.fruit').is(':visible') ){
 			$('.fruit').hide();
-		else
+			app.oElement.fruc.removeClass('hover static');
+		}
+		else{
 			$('.fruit').show();
+			app.oElement.fruc.addClass('hover static');
+		}
+			
 	});
 
+	
+	app.oElement.fruc.on('click', function(){
 
-	$('span[name="fruit"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 650,
-				onComplete: function(){
-					// app.controller.triggerCheckAnim(true);
-				}
-			});
-		// show();
-		// hide();
+		TweenMax.to(app.scrollO.other_17, .5,{
+			top: 1300
+		});
 
-		$('.sScoter, .scoter').hide();
-		$('.life, .sLife').hide();
-		$('.plane, .s2-7').hide();
-		$('.city, .sCity').hide();
-		$('.s2-6, .fruit').show();
+		app.oElement.frucText.show();
+
+		TweenMax.to(app.oElement.frucText, .5,{ top: 427 });
+		TweenMax.to(app.oElement.planeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.bridgeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.lifeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.scuterText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.buttleText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.cityText, .5,{ top: -500 });
+
+		app.oElement.fruc.addClass('hover static');
+		app.oElement.plane.removeClass('hover static');
+		app.oElement.city.removeClass('hover static');
+		app.oElement.bridge.removeClass('hover static');
+		app.oElement.life.removeClass('hover static');
+		app.oElement.scuter.removeClass('hover static');
 
 	});
 }
 
 app.plane = function(){
 
-	function show(){
-		app.controller.addTween('body', 
-			TweenMax.to($('.s2-7, .plane'),.5,{
-				css : {
-					'display': 'block',
-					top: '114px'
-				},
-				onStart: function(){
-					$('.s2-7, .plane').show()
-				}
-			}),
-			0,
-		3800);
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.s2-7, .plane'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.s2-7, .plane').css('top', '1300px')
-				}
-			}),
-			0,
-		4550);
-
-	}
-
-	show();
-	hide();
-
 	$('.s2-7').on('click', function(e){
 		e.preventDefault();
 
-		if( $('.plane').is(':visible') )
+		if( $('.plane').is(':visible') ){
 			$('.plane').hide();
-		else
+			app.oElement.plane.removeClass('hover static');
+		}
+		else{
+			app.oElement.plane.addClass('hover static');
 			$('.plane').show();
+		}
+			
 
 	});
 
+	app.oElement.plane.on('click', function(){
+		
+		app.oElement.planeText.show();
 
-	$('span[name="plane"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 3800,
-				onComplete: function(){
-					// app.controller.triggerCheckAnim(true);
-				}
-			});
-		// show();
-		// hide();
+		TweenMax.to(app.scrollO.other_17, .5,{
+			top: 1300
+		});
 
-		$('.sScoter, .scoter').hide();
-		$('.life, .sLife').hide();
-		$('.city, .sCity').hide();
-		$('.s2-6, .fruit').hide();
-		$('.plane, .s2-7').show();
+		TweenMax.to(app.oElement.frucText, .5,{top: -500 });
+		TweenMax.to(app.oElement.cityText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.bridgeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.lifeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.scuterText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.buttleText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.planeText, .5,{ top: 427 });
 
+		app.oElement.fruc.removeClass('hover static');
+		app.oElement.plane.addClass('hover static');
+		app.oElement.city.removeClass('hover static');
+		app.oElement.bridge.removeClass('hover static');
+		app.oElement.scuter.removeClass('hover static');
+		app.oElement.life.removeClass('hover static');
 	});
 
 };
 
 app.city = function(){
 
-	function show(){
-		app.controller.addTween('body', 
-			TweenMax.to($('.sCity, .city'),.5,{
-				top: '114px',
-				onStart: function(){
-					$('.sCity, .city').show()
-				}
-			}),
-			0,
-		4600);
-	}
-	function hide(){
 
-		app.controller.addTween('body', 
-			TweenMax.to($('.sCity, .city'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.sCity, .city').css('top', '1300px')
-				}
-			}),
-			0,
-		5100);
-
-	}
-
-	hide();
-	show();
-	
 	$('.sCity').on('click', function(e){
 		e.preventDefault();
 
-		if( $('.city').is(':visible') )
+		if( $('.city').is(':visible') ){
 			$('.city').hide();
-		else
+			app.oElement.city.removeClass('hover static');
+		}
+		else{
 			$('.city').show();
+			app.oElement.city.addClass('hover static');
+		}
+			
+	});
+
+	app.oElement.city.on('click', function(){
+		TweenMax.to(app.scrollO.other_17, .5,{
+			top: 1300
+		});
+
+		app.oElement.cityText.show();
+
+		TweenMax.to(app.oElement.frucText, .5,{top: -500 });
+		TweenMax.to(app.oElement.planeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.bridgeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.lifeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.scuterText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.buttleText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.cityText, .5,{ top: 427 });
+
+		app.oElement.city.addClass('hover static');
+		app.oElement.fruc.removeClass('hover static');
+		app.oElement.plane.removeClass('hover static');
+		app.oElement.bridge.removeClass('hover static');
+		app.oElement.scuter.removeClass('hover static');
+		app.oElement.life.removeClass('hover static');
+
+	});
+
+};
+app.bridge = function(){
+
+
+	$('.sBridge').on('click', function(e){
+		e.preventDefault();
+
+		if( $('.bridge').is(':visible') ){
+			$('.bridge').hide();
+			app.oElement.bridge.removeClass('hover static');
+		}		
+		else{
+			$('.bridge').show();
+			app.oElement.bridge.addClass('hover static');
+		}
+			
 	});
 
 
-	$('span[name="city"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 4600,
-				onComplete: function(){
-					// app.controller.triggerCheckAnim(true);
-				}
-			});
-		// app.controller.setOffsetPosition(0, 4750)
+	app.oElement.bridge.on('click', function(){
 
-		// hide();
-		// show();
+		TweenMax.to(app.scrollO.other_17, .5,{
+			top: 1300
+		});
 
-		$('.sScoter, .scoter').hide();
-		$('.life, .sLife').hide();
-		$('.s2-6, .fruit').hide();
-		$('.plane, .s2-7').hide();
-		$('.city, .sCity').show();
+		app.oElement.buttleText.show();
+
+		TweenMax.to(app.oElement.frucText, .5,{top: -500 });
+		TweenMax.to(app.oElement.planeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.cityText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.lifeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.scuterText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.buttleText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.bridgeText, .5,{ top: 427 });
+
+		app.oElement.bridge.addClass('hover static');
+		app.oElement.city.removeClass('hover static');
+		app.oElement.fruc.removeClass('hover static');
+		app.oElement.plane.removeClass('hover static');
+		app.oElement.scuter.removeClass('hover static');
+		app.oElement.life.removeClass('hover static');
 
 	});
 
@@ -290,565 +425,312 @@ app.city = function(){
 
 app.life = function(){
 
-	function show(){
-		app.controller.addTween('body', 
-			TweenMax.to($('.sLife, .life'),.5,{
-				top: '467px',
-				onStart: function(){
-					$('.sLife, .life').show()
-				}
-			}),
-			0,
-		5900);
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sLife, .life'),.5,{
-				top: '-500px',
-				onComplete: function(){
-					$('.sLife, .life').css('top', '1300px')
-				}
-			}),
-			0,
-		6450);
-
-	}
-
-	show();
-	hide();
-
 	$('.sLife').on('click', function(e){
 		e.preventDefault();
 
-		if( $('.life').is(':visible') )
+		if( $('.life').is(':visible') ){
 			$('.life').hide();
-		else
+			app.oElement.life.removeClass('hover static');
+		}
+		else{
 			$('.life').show();
+			app.oElement.life.addClass('hover static');
+		}
+			
 	});
 
 
-	$('span[name="life"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 5900,
-				onComplete: function(){
-					// app.controller.triggerCheckAnim(true);
-				}
-			});
+	app.oElement.life.on('click', function(){
 
-		// show();
-		// hide();
+		TweenMax.to(app.scrollO.other_17, .5,{
+			top: 1300
+		});	
 
-		$('.sScoter, .scoter').hide();
-		$('.s2-6, .fruit').hide();
-		$('.plane, .s2-7').hide();
-		$('.city, .sCity').hide();
-		$('.life, .sLife').show();
+		app.oElement.lifeText.show();
 
+		TweenMax.to(app.oElement.frucText, .5,{top: -500 });
+		TweenMax.to(app.oElement.planeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.cityText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.bridgeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.scuterText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.buttleText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.lifeText, .5,{ top: 427 });
+
+
+		app.oElement.bridge.removeClass('hover static');
+		app.oElement.city.removeClass('hover static');
+		app.oElement.fruc.removeClass('hover static');
+		app.oElement.plane.removeClass('hover static');
+		app.oElement.scuter.removeClass('hover static');
+		app.oElement.life.addClass('hover static');
 	});
 
 };
 
 app.scoter = function(){
-
-	function show(){
-		app.controller.addTween('body', 
-			TweenMax.to($('.sScoter, .scoter'),.5,{
-				top: '114px',
-				onStart: function(){
-					$('.sScoter, .scoter').show()
-				}
-			}),
-			0,
-		5750);
-	}
-	function hide(){
-
-		app.controller.addTween('body', 
-			TweenMax.to($('.sScoter, .scoter'),.3,{
-				top: '-500px',
-				onComplete: function(){
-					$('.sScoter, .scoter').css('top', '1300px')
-				}
-			}),
-			0,
-		6300);
-
-	}
-
-	hide();
-	show();
 	
 	$('.sScoter').on('click', function(e){
 		e.preventDefault();
 
-		if( $('.scoter').is(':visible') )
+		if( $('.scoter').is(':visible') ){
 			$('.scoter').hide();
-		else
+			app.oElement.scuter.removeClass('hover static');
+		}		
+		else{
 			$('.scoter').show();
+			app.oElement.scuter.addClass('hover static');
+		}
+			
 	});
 
-	$('span[name="scoter"]').on('click', function(){
-		TweenMax.to($('body'),1 ,{
-				scrollTop : 5750,
-				onComplete: function(){
-					// app.controller.triggerCheckAnim(true);
-				}
-			});
+	app.oElement.scuter.on('click', function(){
 
-		// hide();
-		// show();
-		
-		$('.s2-6, .fruit').hide();
-		$('.plane, .s2-7').hide();
-		$('.city, .sCity').hide();
-		$('.life, .sLife').hide();
-		$('.sScoter, .scoter').show();
+		TweenMax.to(app.scrollO.other_17, .5,{
+			top: 1300
+		});
+
+		app.oElement.scuterText.show();
+
+		TweenMax.to(app.oElement.frucText, .5,{top: -500 });
+		TweenMax.to(app.oElement.planeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.cityText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.bridgeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.lifeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.buttleText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.scuterText, .5,{ top: 427 });
+
+
+		app.oElement.bridge.removeClass('hover static');
+		app.oElement.city.removeClass('hover static');
+		app.oElement.fruc.removeClass('hover static');
+		app.oElement.plane.removeClass('hover static');
+		app.oElement.life.removeClass('hover static');
+		app.oElement.scuter.addClass('hover static');
 
 	});
 }
 
+app.orangeButtle = function(){
+	
+	$('#orange .sButtle').on('click', function(e){
+		e.preventDefault();
+
+		if( $('#orange .buttle').is(':visible') ){
+			$('#orange .buttle').hide();
+		}		
+		else{
+			$('#orange .buttle').show();
+		}
+	});
+	
+	app.oElement.buttle.on('click', function(){
+
+		TweenMax.to(app.scrollO.other_17, .5,{
+			top: 1300
+		});	
+
+		app.oElement.buttleText.show();
+
+		TweenMax.to(app.oElement.frucText, .5,{top: -500 });
+		TweenMax.to(app.oElement.planeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.cityText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.bridgeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.lifeText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.scuterText, .5,{ top: -500 });
+		TweenMax.to(app.oElement.buttleText, .5,{ top: 427 });
+
+	});
+
+}
+app.orangeHover = function(){
+
+	//plane
+	app.oElement.plane.hover(function(){
+
+		app.oElement.plane.addClass('hover');
+
+	}, function(){
+		if( !app.oElement.plane.is('.static') )
+			app.oElement.plane.removeClass('hover');
+
+	});
+
+	// city
+	app.oElement.city.hover(function(){
+		app.oElement.city.addClass('hover');
+
+	}, function(){
+		if( !app.oElement.city.is('.static') )
+			app.oElement.city.removeClass('hover');
+
+	});
+
+	// fruit
+	app.oElement.fruc.hover(function(){
+		app.oElement.fruc.addClass('hover');
+
+	}, function(){
+		if( !app.oElement.fruc.is('.static') )
+			app.oElement.fruc.removeClass('hover');
+	});
+
+	// life
+	app.oElement.life.hover(function(){
+		app.oElement.life.addClass('hover');
+
+	}, function(){
+		if( !app.oElement.life.is('.static') )
+			app.oElement.life.removeClass('hover');
+	});
+
+	// scuter
+	app.oElement.scuter.hover(function(){
+		app.oElement.scuter.addClass('hover');
+
+	}, function(){
+		if( !app.oElement.scuter.is('.static') )
+			app.oElement.scuter.removeClass('hover');
+	});
+
+	// bridge
+	app.oElement.bridge.hover(function(){
+		app.oElement.bridge.addClass('hover');
+
+	}, function(){
+		if( !app.oElement.bridge.is('.static') )
+			app.oElement.bridge.removeClass('hover');
+	});
+
+
+}
+
 app.startOrange = function(){
 
-		// 2
-		this.controller.addTween('body', 
-			TweenMax.from($('#orange .s2'),.5,{
-				css:{opacity:0}}),
-			0,
-			75);
-		this.controller.addTween('body', 
-			TweenMax.to($('.s2-1'),.5,{
-				css:{top:'155px'}}),
-			0,
-			350);
+	if( !app.elements.citrus.is( ':visible' ) ) return
 
-		this.controller.addTween('body', 
-			TweenMax.to($('.s2-2'),.5,{
-				css:{bottom:'457px'}}),
-			0,
-			350);
-		this.controller.addTween('body', 
-			TweenMax.to($('.s2-3'),.5,{
-				bottom:'457px',
-				delay : 0.5
-			}),
-			0,
-			350);
+	$(window).on('scroll', function(){
 
-		this.controller.addTween('body', 
-			TweenMax.to($('.s2-4'),.5,{
-				bottom:'302px',
-			}),
-			0,
-			450);
+		if( app.elements.citrus.is( ':visible' ) && $(this).scrollTop() === 0 ){
 
-		this.controller.addTween('body', 
-			TweenMax.to($('.s2-5'),.5,{
-				bottom:'302px',
-			}),
-			0,
-			550);
+			TweenMax.to($('.orange'), .3, {
+				'marginTop' : '0'
+			});
+			app.elements.citrus.hide();
+			app.oElement.scrollBox.css('top', '307px');
+			app.oElement.bridge.removeClass('hover static');
+			app.oElement.city.removeClass('hover static');
+			app.oElement.fruc.removeClass('hover static');
+			app.oElement.plane.removeClass('hover static');
+			app.oElement.life.removeClass('hover static');
+			app.oElement.scuter.removeClass('hover static');
+			$(this).off();
+		}
+	});
 
+	// 0
+	TweenMax.staggerTo( [ 
+		app.scrollO.bridge[0], 
+		app.scrollO.bridge[1], 
+		app.scrollO.city[0],
+		app.scrollO.city[1], 
+		app.scrollO.city[2],
+		app.scrollO.other_5 ], .8, {
+			top : 0,
+			scale : 1,
+			ease:Sine.easeIn
+	}, .3)
 
-		// step-3
+	// 155
+	TweenMax.staggerTo( [ 
+		app.scrollO.bridge[2], 
+		app.scrollO.bridge[3], 
+		app.scrollO.city[3],
+		app.scrollO.city[4], 
+		app.scrollO.city[5],
+		app.scrollO.other_11 ], .8, {
+		top : 155,
+		scale : 1,
+		ease:Sine.easeIn
+	}, .3);
+	// 310
+	TweenMax.staggerTo( [ 
+		app.scrollO.city[6], 
+		app.scrollO.city[7], 
+		app.scrollO.other_14,
+		app.scrollO.other_17, 
+		app.scrollO.other_16,
+		app.scrollO.plane[0], 
+		app.scrollO.plane[1], 
+		app.scrollO.other_13 ], .8, {
+			top : 310,
+			scale : 1,
+			ease:Sine.easeIn
+	}, .3);
 
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-1'),.5,{
-				top:'309px'
-			}),
-			0,
-			850);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-2'),.2,{
-				top:'462px'
-			}),
-			0,
-			1750);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-3'),.5,{
-				top:'311px'
-			}),
-			0,
-			1050);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-4'),.5,{
-				top:'310px',
-				delay : 2
-			}),
-			0,
-			1150);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-13'),.5,{
-				top:'310px',
-				delay : 2
-			}),
-			0,
-			1250);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-5'),.5,{
-				top:'153px'
-			}),
-			0,
-			1350);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-6'),.5,{
-				top:'461px'
-			}),
-			0,
-			1450);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-7'),.5,{
-				top:'769px'
-			}),
-			0,
-			1550);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-8'),.5,{
-				top:'742px',
-				delay : 1
-			}),
-			0,
-			1650);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-9'),.2,{
-				top:'614px'
-			}),
-			0,
-			1750);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-11'), .2,{
-				top:'614px'
-			}),
-			0,
-			1750);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-10'),.2,{
-				top:'465px'
-			}),
-			0,
-			1750);
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-12'),.5,{
-				top:'770px'
-			}),
-			0,
-			2050);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-14'),.5,{
-				top:'616px'
-			}),
-			0,
-			2150);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-15'),.5,{
-				top:'467px'
-			}),
-			0,
-			2250);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s3-16'),.5,{
-				top:'0'
-			}),
-			0,
-			2250);
-
-		// 3б
-		this.controller.addTween('body', 
-			TweenMax.to($('.s4-1'),.3,{
-				top:'161px'
-			}),
-			0,
-			2550);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s4-2'),.3,{
-				bottom:'456px',
-				delay : 0.5
-			}),
-			0,
-			2650);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s4-3'),.3,{
-				bottom:'456px',
-				delay : 1
-			}),
-			0,
-			2750);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s4-4'),.3,{
-				bottom:'300px',
-				delay : 1.5
-			}),
-			0,
-			2850);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s4-5'),.3,{
-				bottom:'300px',
-				delay : 2
-			}),
-			0,
-			2950);
-	// 4
-		this.controller.addTween('body', 
-			TweenMax.to($('.s5-0'),.3,{
-				top:'158px'
-			}),
-			0,
-			3150);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s5-1'),.3,{
-				top:'307px'
-			}),
-			0,
-			3300);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s5-2'),.3,{
-				top:'308px'
-			}),
-			0,
-			3450);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s5-3'),.3,{
-				top:'466px'
-			}),
-			0,
-			3550);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s5-4'),.3,{
-				top:'623px'
-			}),
-			0,
-			3700);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s5-5'),.3,{
-				top:'466px'
-			}),
-			0,
-			3700);
-		// 6
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-0'),.3,{
-				top:'298px'
-			}),
-			0,
-			4000);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-1'),.3,{
-				top:'298px'
-			}),
-			0,
-			4150);
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-2'),.3,{
-				top:'94px'
-			}),
-			0,
-			4250);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-3'),.3,{
-				top:'250px'
-			}),
-			0,
-			4350);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-4'),.3,{
-				top:'94px'
-			}),
-			0,
-			4450);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-5'),.3,{
-				top:'249px'
-			}),
-			0,
-			4550);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-6'),.3,{
-				top:'404px'
-			}),
-			0,
-			4650);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-7'),.3,{
-				top:'616px'
-			}),
-			0,
-			4750);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-8'),.3,{
-				top:'765px'
-			}),
-			0,
-			4850);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-9'),.3,{
-				top:'740px'
-			}),
-			0,
-			4950);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-10'),.3,{
-				top:'615px'
-			}),
-			0,
-			5050);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-11'),.3,{
-				top:'146px'
-			}),
-			0,
-			5150);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s6-11'),.3,{
-				top:'94px'
-			}),
-			0,
-			5300);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s7-0'),.3,{
-				opacity: 1
-			}),
-			0,
-			5450);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s7-1'),.3,{
-				top:'439px'
-			}),
-			0,
-			5600);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s7-2'),.3,{
-				top:'550px'
-			}),
-			0,
-			5750);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s7-3'),.3,{
-				top:'770px'
-			}),
-			0,
-			5900);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s7-5'),.3,{
-				bottom:'149px'
-			}),
-			0,
-			6050);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s7-6'),.3,{
-				bottom:'452px'
-			}),
-			0,
-			6200);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s7-7'),.3,{
-				bottom:'297px'
-			}),
-			0,
-			6350);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s7-8'),.3,{
-				bottom:'148px'
-			}),
-			0,
-			6500);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s8-0'),.3,{
-				opacity: 1
-			}),
-			0,
-			6650);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s8-1'),.3,{
-				top: 0
-			}),
-			0,
-			6800);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s8-2'),.3,{
-				top: '154px'
-			}),
-			0,
-			6950);
-
-		this.controller.addTween('body', 
-			TweenMax.to($('.s8-3'),.3,{
-				top: '0'
-			}),
-			0,
-			7050);
-
-		this.controller.addTween('body',
-			TweenMax.to($('.s8-4'),.3,{
-				top: '926px'
-			}),
-			0,
-			7200);
-
-		this.controller.addTween('body',
-			TweenMax.to($('.s8-5'),.3,{
-				top: '926px'
-			}),
-			0,
-			7350);
-
-		this.controller.addTween('body',
-			TweenMax.to($('.s8-6, .s8-7'),.3,{
-				top: '925px'
-			}),
-			0,
-			7500);
-
-		this.controller.addTween('body',
-			TweenMax.to($('#orange .scrollBox'),.3,{
-				top: '0'
-			}),
-			7500,
-			0);
+	//  465
+	TweenMax.staggerTo( [ 
+		app.scrollO.plane[3],
+		app.scrollO.scuter[0], 
+		app.scrollO.scuter[1], 
+		app.scrollO.other_22, 
+		app.scrollO.other_23,
+		app.scrollO.plane[2]
+	],.8,{
+		top: 465,
+		scale : 1,
+		ease:Sine.easeIn
+	}, .3)
 
 
-	};
+	// 615
+	TweenMax.staggerTo( [ 
+		app.scrollO.other_29, 
+		app.scrollO.other_26, 
+		app.scrollO.fruct[0], 
+		app.scrollO.fruct[1],
+		app.scrollO.scuter[2], 
+		app.scrollO.scuter[3] ],.8,{
+			top: 615,
+			scale : 1,
+			ease:Sine.easeIn
+	}, .3)
+
+	// 770
+	TweenMax.staggerTo( [ 
+		app.scrollO.other_35,  
+		app.scrollO.other_32, 
+	 	app.scrollO.other_31,  
+	 	app.scrollO.other_33, 
+	 	app.scrollO.other_30,  
+	 	app.scrollO.other_34 ],.8,{
+			top: 770,
+			scale : 1,
+			ease:Sine.easeIn
+	}, .3)
+
+	// 925
+	TweenMax.staggerTo( [
+	 	app.scrollO.other_36, 
+	 	app.scrollO.other_40,
+	 	app.scrollO.other_39, 
+	 	app.scrollO.other_37, 
+	 	app.scrollO.other_38, 
+	 	app.scrollO.other_41 ],.8,{
+		scale : 1,
+		top : 925,
+		ease:Sine.easeIn
+	}, .3);
+
+
+	TweenMax.to(app.scrollO.other_43,.8,{
+		top: 924,
+		scale : 1,
+		ease:Sine.easeIn
+	})
+
+	TweenMax.to(app.oElement.scrollBox, 2,{
+		top: 0
+	});
+
+	// app.elements.htmlBody.animate({'scrollTop' : $(document).height() })
+}
