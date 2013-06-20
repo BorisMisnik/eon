@@ -101,4 +101,3 @@ $(document).on({
 		// app.initAlmond();
 	}
 });
-

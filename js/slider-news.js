@@ -47,5 +47,4 @@ $(function(){
 	}
 
 	setInterval(shownews, 3000);
-
 });
